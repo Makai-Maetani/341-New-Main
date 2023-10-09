@@ -1,0 +1,91 @@
+
+header{
+    
+    background-color: rgba(20,30,13, .7);
+    color: white;
+    
+}
+
+.Soclink{
+    background-color: rgba(20,30,13, .7);
+    color: #d9c2a3;
+    text-decoration: none;
+
+}
+
+
+.Joinus{
+    background-color: rgba(20,30,13, .7);
+    color:White;
+    text-align: center;
+    
+}
+
+.join{
+    color: black;
+    text-decoration: none;
+    background-color: #d9c2a3;
+}
+
+.hero-msg{
+    text-align: center;
+}
+
+.camping-card{
+    text-align: center;
+}
+
+.rivers-card{
+    text-align: center;
+}
+
+.rapids-card{
+    text-align: center;
+}
+
+.msg{
+    
+    color:White;
+    
+    
+}
+
+body {
+    background-color: #fcfbfb; 
+}
+
+nav a {
+    text-align: center;
+    color: #fcfbfb;
+    text-decoration: none;
+}  
+
+.joinSoc{
+    text-decoration: none;
+    color: #d9c2a3;
+
+}
+
+.Ugly{
+    background-color: #d9c2a3;
+}
+
+.hero-img{
+    max-width: 100%;
+    text-align: center;
+}
+
+.book{
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    background-color: #d9c2a3;
+}
+
+nav a:hover {
+    background-color: black;
+    color: #d9c2a3;
+}
+.icon {
+    width: 80px;
+}
