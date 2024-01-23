@@ -1,5 +1,18 @@
 // 🔍 Part 1 error
+
+let fullName = "Patricia Juarez";
+let currentYear = "2016";
 let userName = "Moroni";
+const nameElement = document.getElementById('name');
+const foodElement = document.getElementById('food');
+const yearElement = document.getElementById('#year');
+const imageElement = document.getElementById('Makai.jpg');
+
+nameElement.innerHTML = <strong>${fullName}</strong>;
+yearElement.textContent = <strong>${currentYear}</strong>;
+imageElement.setAttribute('src', Makai.jpg);
+
+
 console.log(`Username: ${userName}`);
 userName = "Moronihah";
 console.log(`Username: ${userName}`);
