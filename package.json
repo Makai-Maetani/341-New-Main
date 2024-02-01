@@ -1,0 +1,11 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "W03 Assignment Fixed",
+  "main": "index.js",
+  "scripts": {
+    "hello":"node helloworld.js"  
+  },
+  "author": "Makai",
+  "license": "ISC"
+}
