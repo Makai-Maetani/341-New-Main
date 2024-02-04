@@ -4,7 +4,8 @@
   "description": "W03 Assignment Fixed",
   "main": "index.js",
   "scripts": {
-    "hello":"node helloworld.js"  
+    "hello":"node helloteam.js"  
+
   },
   "author": "Makai",
   "license": "ISC"
