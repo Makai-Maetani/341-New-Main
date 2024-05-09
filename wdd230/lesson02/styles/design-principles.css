@@ -35,6 +35,7 @@ section:nth-child(2){
 }
 
 .card-container{
+    /*grids*/
 display: flex;
 justify-content: center;
 flex-wrap: wrap;
@@ -91,6 +92,9 @@ margin-top: 100px;
         grid-template-columns: 1fr 1fr;
     }
 
+   
+   /*card 3 take up 2 columns*/
+   
     section:nth-child(2){
         display: block;
        
