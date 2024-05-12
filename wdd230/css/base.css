@@ -47,6 +47,15 @@ body{
 
 .gmap{
     justify-content: center;
+    align-items: center;
+    display: flex;
+    
+}
+
+.verticalMenu a{
+    display: block;
+    padding: 12px;
+    text-align: center;
 }
 
 
@@ -99,7 +108,7 @@ body{
       
       /* Style the active link (or home/logo) */
       .active {
-        background-color: #04AA6D;
+        background-color: black;
         color: white;
       }
     
