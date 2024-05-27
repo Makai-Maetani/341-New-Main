@@ -17,6 +17,7 @@
 
     
     <script src="scripts/darkMode.js" defer></script>
+    <script src="scripts/responsiveMenu.js" defer></script>
     
     <meta property="og:Author" content="Makai Maetani">
     <meta property="og:url" content="https://makai-maetani.github.io/">
@@ -35,11 +36,22 @@
 
 <body>
 
-<div class = "background">
-    <div class="dark">
-    <input type="checkbox" id="darkmode-toggle" onclick="myFunction()"/>
-<label for="darkmode-toggle">
-</div>
+    <a id="menu" href="#"></a>
+    <nav>
+	    <ul class="navigation">
+		    <li><a href="#">Home</a></li>
+		    <li><a href="#">About</a></li>
+		    <li><a href="#">Products</a></li>
+		    <li><a href="#">Feedback</a></li>
+		    <li><a href="#">History</a></li>
+		    <li><a href="#">Contact</a></li>
+            <div class = "background">
+                <div class="dark">
+                <input type="checkbox" id="darkmode-toggle" onclick="myFunction()"/>
+            <label for="darkmode-toggle">
+            </div>
+	    </ul>
+    </nav>
 
     <header class="header">
        
@@ -161,7 +173,7 @@
 
     <footer class="footer">
         <p>
-            &copy; 2024 | Makai Maetani | Orem Utah | <span>BYUI Online Learning</span>
+            &copy; 2024 | Makai Maetani | Orem Utah | BYUI Online Learning
         </p>
         <p class="last-update" id="lastModified"></p>
     </footer>
