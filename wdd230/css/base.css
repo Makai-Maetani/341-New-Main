@@ -13,8 +13,13 @@ body{
     
   }
 
-img{
-    max-height:500px;
+  img{
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.header img{
+  max-height:500px;
    
     height:5rem;
     width:5rem;
