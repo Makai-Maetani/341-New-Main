@@ -1,17 +1,28 @@
-
-
-
-
 body{
     margin: .5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
     padding: .5rem;
     font-family: 'Roboto', Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    background-color: white;
+   transition: 0.5s;
+}
+
+.dark-mode {
+    background-color: black;
+    
+  }
+
+img{
+    max-height:500px;
+   
+    height:5rem;
+    width:5rem;
 }
 
 .header{
     display: flex;
-    background-color: #114c50;
+    background-image: linear-gradient(360deg, #C61212, #3E1270);
     color: #ffffff;
     justify-content: center;
     padding: 1rem;
@@ -24,17 +35,106 @@ body{
     box-shadow: 3px 5px 32px 8px rgba(0,0,0,0.36);
 }
 
-.main {
-    padding: 1rem;
+
+
+.card-container{
+    /*grids*/
+display: flex;
+/* grid-template-columns: 1fr 1fr 1fr; */
+justify-content: center;
+flex-wrap: wrap;
+margin-top: 100px;
 }
 
+.card{
+    /* width:325px; */
+    background-color: beige;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.36);
+    margin: 20px;
+    padding: 10px;
+}
+
+.card1{
+    background-image: linear-gradient(12deg, #C61212, #3E1270);
+}
+
+.weather{
+    color:white;
+    
+    background-image: linear-gradient(12deg, #C61212, #3E1270);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 1rem;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.36);
+    text-align: center;
+    justify-content: center;
+
+}
+
+.sky{
+    text-align: center;
+    justify-content: center;
+}
+
+.news01{
+     color:white;
+    
+
+     margin-right: 4rem;
+     margin-left: 4rem;
+    background-image: linear-gradient(12deg, #3E1270, #C61212);
+    border-radius: 8px;
+    padding: 10px;
+    
+}
+
+.card img{
+    width:100%;
+    height: auto;
+}
+
+
+
+.card-content{
+    padding: 16px;
+}
+
+.card-content h3{
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.card-content p{
+    font-size: 28px;
+    line-height: 1.3;
+}
+
+
+.btn{
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #333;
+    text-decoration: none;
+    border-radius: 1rem;
+    margin-top: 16px;
+    color:#fff;
+}
+
+/*colimage{
+
+}
+*/
+/*medium*/    
+
 .footer {
-    background-color: #114c50;
+    background-image: linear-gradient(180deg, #C61212, #3E1270);
     color: #ffffff;
     text-align: center;
     padding: 1rem;
     border-radius: 1rem;
-    font-size: .9rem;
+    /*font-size: .9rem;*/
 }
 
 .footer span {
@@ -44,20 +144,6 @@ body{
 .last-update {
     color: #F2DB14;
 }
-
-.gmap{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    
-}
-
-.verticalMenu a{
-    display: block;
-    padding: 12px;
-    text-align: center;
-}
-
 
 .body-list{
     display: flex;
@@ -69,240 +155,227 @@ body{
 }
 
 
-@media(max-width:768px){
-    /* Style the navigation menu */
-    .topnav {
-        overflow: hidden;
-        background-color: #333;
-        position: relative;
-      }
-      
-      /* Hide the links inside the navigation menu (except for logo/home) */
-      .topnav #myLinks {
-        display: none;
-      }
-      
-      /* Style navigation menu links */
-      .topnav a {
-        color: white;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-        display: block;
-      }
-      
-      /* Style the hamburger menu */
-      .topnav a.icon {
-        background: rgb(6, 29, 243);
-        display: block;
-        position: absolute;
-        right: 0;
-        top: 0;
-      }
-      
-      /* Add a grey background color on mouse-over */
-      .topnav a:hover {
-        background-color: #ddd;
-        color: black;
-      }
-      
-      /* Style the active link (or home/logo) */
-      .active {
-        background-color: black;
-        color: white;
-      }
-    
-    }
 
-/*
+/*New Stuff*/
 
-.hamb{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    background-color: #F2DB14;
-    border-radius: 1rem;
-}
 
-li{
-    list-style: none;
-}
 
-a{
-    color:#2b0cda;
-    text-decoration: none;
-}
+/* designing title and tag line */
 
-.navbar{
-    min-height: 70px;
+.button{
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
-    padding: 0 24px;
-}
-
-.nav-menu{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 60px;
-}
-
-.nav-branding{
-    font-size: 2rem;
-}
-
-.nav-link{
-    transition: 0.7s ease;
-}
-
-.nav-link:hover{
-    color: #121ec5;
-}
-
-.hamburger{
-    display: none;
-    cursor: pointer;
-}
-
-.bar{
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    -webkit-transition: all 0.3s ease-in-out ;
-    transition: all 0.3s ease-in-out ;
-    background-color: #000000;
-
-}
-
-@media(max-width:768px){
-    
-    .hamburger{
-        display: block;
-    }
-
-    .hamburger.active .bar:nthchild(2){
-        opacity: 0;
-    }
-    .hamburger.active .bar:nthchild(2){
-        transform: translate(8px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nthchild(3){
-        transform: translate(-8px) rotate(-45deg);
-    }
+    text-align: center;
+   
+ }
  
-    .nav-menu{
-        position:fixed;
-        left: -100%;
-        top: 70px;
-        gap:0;
-        flex-direction: column;
-       
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-    }
+ .btn-1{
+     width: 300px;
+     height: 100px;
+     border: none;
+     color: rgb(255, 255, 255);
+     background-image: linear-gradient(90deg, #C61212, #3E1270 ,#3E1270, #C61212);
+     border-radius: 1rem;
+     box-shadow: inset 0 0 0 0#f9e506;
+     transition: ease-out 0.3s;
+     font-size: 2rem;
+     outline: none;
+ }
+ 
+ .btn-1:hover{
+     box-shadow: inset 300px 0 0 0#f9e506;
+     cursor: pointer;
+     color: #000000;
+ }
 
-    .nav-item{
-        margin: 16px 0;
-    }
 
-    .nav-menu.active{
-        left:0;
-    }
+
+.container {
+    position: relative;
+    text-align: center;
+    color: rgb(229, 255, 0);
+    font-size: larger;
+    font-weight: bold;
+    text-shadow: 2px 2px black;
     
+  }
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /*Dark Mode*/
+
+  label {
+    width:100px;
+    height:50px;
+    position: relative;
+    display: block;
+    background: #ebebeb;
+    border-radius: 50px;
+    box-shadow: inset 0px 5px 15px rgba(0,0,0,0.4), inset 0px -5px 15px rgba(255,255,255,0.4);
+    cursor: pointer;
+    margin: .5rem
+  }
+
+  label:after {
+    content: "";
+    width:25px;
+    height: 25px;
+    position: absolute;
+    top:10px;
+    left:10px;
+    background: linear-gradient(180deg,#ffcc89,#d8860b);
+    border-radius: 180px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+  }
+
+  input:checked + label {
+    background: #242424;
+  }
+  input:checked + label:after {
+    left:85px;
+    transform: translateX(-100%);
+    background: linear-gradient(180deg,#777,#3a3a3a);
+  }
+  label, label:after {
+    transition: 0.3s
+  }
+
+  input {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+
+  label:active:after{ 
+    width: 1px; 
+  }
+
+  .dark{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+  }
+
+  /*Allnav*/
+  .allNav{
+    display: block;
+    font-size: 1.5rem;
+    font-weight:700;
+    text-decoration: none;
+    padding: 1rem;
+    background-image: linear-gradient(180deg, #C61212, #3E1270);
+    color: white;
+    border-radius: 1rem;
+  }
+
+  /*gmap*/
+  .gmap{
+    display: flex;
+   justify-content: center;
+   
+
+    
+    padding: 1rem;
+    background-image: linear-gradient(180deg, #C61212, #3E1270);
+    margin: 1rem;
+    /*TA Help*/
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1rem;
+  }
 
 
-}
+  /*Nav Menu*/
 
-/*
-#menu{
+  #menu {
     display: block;
     font-size: 2rem;
-    font-weight: 700;
+    font-weight:700;
     text-decoration: none;
     padding: .5rem .75rem;
-    background-color: #eee;
-    color: #000;
-
-}
-
-#menu::before{
-    content:"---"
-}
-
-ul{
+    background-image: linear-gradient(180deg, #C61212, #3E1270);
+    color: white;
+    border-radius: 1rem;
+  }
+  
+  #menu::before {
+    content: "≡";
+  }
+  
+  nav {
+    background-image: linear-gradient(180deg, #C61212, #3E1270);
+    margin: 1rem;
+    color: white;
+    border-radius: 1rem;
+  }
+  .navigation {
     list-style: none;
-    background: #114c50;
-
-}
-
-ul li{
-    display: inline-block;
-    position: relative;
-}
-
-ul li a{
-    display: block;
-    padding: 20px 25px;
-    color:#000;
-    text-decoration: none;
-    text-align: center;
-}
-
-ul li a:hover{
-    background: #112c66;
-}
-
-ul li ul.dropdown li{
-    display: block;
-    
-}
-
-ul li ul.dropdown{
-    width: 100%;
-    background: #000;
-    position: absolute;
-    z-index: 999;
+    margin: 0 auto;
+    max-width: 760px;
+  }
+  
+  .navigation li {
     display: none;
-}
-
-ul li a:hover{
-    background: #112c66;
-}
-
-ul li:hover ul.dropdown{
+  }
+  .navigation a {
     display: block;
-}
+    padding: 0.75rem;
+    text-align: left;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    transition: 0.5s;
+    font-size: clamp(1rem, 2vmin, 1.5rem);
+  }
+  
+  .navigation a:hover, navigation a:active {
+    color: black;
+    background-image: linear-gradient(35deg, #fbff00, #ff0000);
+    border-radius: 1rem;
+    
+  }
+  
+  .show li {
+    display: block;
+  }
+  
+  #menu.show::before {
+    content: "X";
+  }
+  
+  /* Media Query for wider than mobile viewports. Breakpoint should be based upon the design and content and use em units to be relative to the user's font size versus fixed with pixels.*/
+  @media only screen and (min-width: 40em) {
+    .navigation {
+      display: flex;
+    }
+    .navigation li {
+      display: block; /* change state in small view */
+      flex: 1 1 100%;
+    }
+    .navigation a {
+      text-align: center;
+    }
+    #menu {
+      display: none;
+    }
+  }
 
-
-
-
-
-/*
-.nav a{
-    display:block;
-    color:#fff;
+  .container {
+    position: relative;
     text-align: center;
-    padding: 1rem;
-    text-decoration:none;
-}
-
-.nav a:hover{
-   border: 1px solid #fff;
-}
-
-@media (min-width: 640px) {
-    nav ul{
-        display: flex;
-        justify-content: center;
-
-    }
-
-    nav ul li{
-        flex: 1 1 auto;
-    }
-
-}
+    color: rgb(255, 0, 0);
+    font-size: 5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px rgb(0, 0, 0);
+  
+    backdrop-filter: blur(15px);
+    
+    
+  }
