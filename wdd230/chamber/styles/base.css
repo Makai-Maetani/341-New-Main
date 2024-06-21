@@ -437,3 +437,105 @@ margin-top: 100px;
     }
   }
 
+
+
+  /* Directory Stuff*/
+
+  .directoryPage h2.dirHeading {
+    font-family: 'Montserrat';
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #EEEE;
+    margin-bottom: 3rem;
+}
+.list-view section h2, .grid-view section h2 {
+    font-family: 'Noto Serif';
+    text-align: center;
+}
+/*--------Directory Page buttons----------*/
+.links ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+.links ul li span {
+    margin: 7px;
+    font-size: 2rem;
+}
+.links ul li:hover,
+.links ul li.active {
+    color: white;
+    background-color: #14213D;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/*--------Grid View-------------*/
+.grid-view section {
+    margin: 1rem;
+    padding: 2.5rem 1.5rem;
+    border-radius: 1rem;
+    border: #888 1px solid;
+    color: #14213D;
+}
+.grid-view section img{
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+.grid-view section hr {
+    margin-bottom: 1.5rem;
+}
+.grid-view section p,
+.grid-view section a {
+    font-size: 13px;
+    font-weight: bolder;
+    padding: 5px 0;
+}
+/*-----------List View------------*/
+.list-view section {
+    padding: 1rem;
+    color: #14213D;
+    margin: 0 .5rem;
+    font-weight: bold;
+    font-size: 13px;
+}
+.list-view section:nth-last-of-type(even) {
+    background-color: rgba(252,163,17, .5);
+}
+.list-view section p {
+    padding: 3px;
+}
+.list-view section:last-child {
+    margin-bottom: 3rem;
+}
+/*-----------Contact---------------*/
+label.cont-fields {
+    display: block;
+    padding: .50rem 0;
+    font-weight: bold;
+}
+label.cont-fields input {
+    display: block;
+    width: 100%;
+    max-width: 20rem;
+    border: 1px solid #888;
+    padding: .50rem 0;
+}
+#contact div {
+    width: 95%;
+    margin: 0 auto;
+    padding: 1.5rem 0;
+}
+.contactBtn {
+    margin: 1.5rem 0 1.5rem 1rem;
+    padding: .50rem;
+    background-color: #FCA311;
+    color: #14213D;
+    font-weight: bold;
+    border: none;
+}
+.contactBtn:hover {
+    background-color: #14213D;
+    color: #E5E5E5;
+}

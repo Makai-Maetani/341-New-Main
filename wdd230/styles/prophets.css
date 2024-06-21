@@ -1,0 +1,30 @@
+#cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,
+    minmax(340px, 1fr));
+
+}
+h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 1000;
+    text-align: center;
+}
+h1,h4{
+    text-align: center;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}   
+
+header{
+    background-color: antiquewhite;
+}
+main{
+    background-color:beige;
+}
+footer{
+    text-align: center;
+}

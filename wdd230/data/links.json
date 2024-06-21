@@ -1,0 +1,89 @@
+{
+    "weeks": [
+        {
+            "week": "Week 01",
+            "links": [
+                {
+                    "url": "https://makai-maetani.github.io/index.html",
+                    "title": "Course Home Page"
+                }
+            ]
+        },
+        {
+            "week": "Week 02",
+            "links": [
+                {
+                    "url": "https://makai-maetani.github.io/lesson02/design-principles.html",
+                    "title": "Design Principles"
+                }
+            ]
+        },
+        {
+            "week": "Week 03",
+            "links": [
+                {
+                    "url": "https://makai-maetani.github.io/wdd230/lesson03/W03.html",
+                    "title": "Chamber Plan"
+                }
+            ]
+        },
+        {
+            "week": "Week 04",
+            "links": [
+                {
+                    "url": "https://makai-maetani.github.io/wdd230/chamber/",
+                    "title": "Chamber Home Page"
+                }
+            ]
+        },
+        {
+            "week": "Week 05",
+            "links": [
+                {
+                    "url": "https://makai-maetani.github.io/wdd230/lesson05/bom.html",
+                    "title": "Dom Manipulation"
+                }
+            ]
+        },
+
+        {
+            "week": "Week 06",
+            "links": [
+                {
+                    "url": "https://makai-maetani.github.io/wdd230/chamber/",
+                    "title": "Chamber Page Enhancement"
+                }
+            ]
+        },
+
+        {
+            "week": "Week 07",
+            "links": [
+                {
+                    "url": "https://makai-maetani.github.io/wdd230/chamber/discover.html",
+                    "title": "Discover Page"
+                }
+            ]
+        },
+
+        {
+            "week": "Week 08",
+            "links": [
+                {
+                    "url": "https://makai-maetani.github.io/wdd230/chamber/join.html",
+                    "title": "Join Page"
+                }
+            ]
+        },
+
+        {
+            "week": "Week 09",
+            "links": [
+                {
+                    "url": "https://makai-maetani.github.io/prophets.html",
+                    "title": "Prophets Page"
+                }
+            ]
+        }
+    ]
+}

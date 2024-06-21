@@ -1,149 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real Weather Today | Home</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <meta name="author" content="Christian Soldevilla">
-    <link rel="stylesheet" href="css/normalize.css">
-    <script src="https://kit.fontawesome.com/2bdc0b59cd.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/small.css">
-    <link rel="stylesheet" href="css/medium.css">
-    <link rel="stylesheet" href="css/large.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samuel Turay - WDD 230 - Web Frontend Development</title>
+  <meta name="description"
+    content="WDD 230 - Web Frontend Development. Course assignment portal for Samuel Turay. Course offered by Brigham Young University - BYU, through Pathway Worldwide. Assignment portal links to all learning activities and project.">
+  <meta name="author" content="Samuel Turay">
+  <meta property="og:title" content="Samuel Turay - WDD230 - Web Frontend Development">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://pbs.twimg.com/media/DTsoG8_XUAEzZhB?format=webp&name=small">
+  <meta property="og:url" content="koigor97.github.io/wdd230/index.html">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/larger.css">
 </head>
+
 <body>
-    <aside id="aside" style="display: none;">
-        <p>Saturday = Preston Pancakes in the Park! 9:00 a.m. Saturday at the city park pavilion.</p>
-    </aside>
-    <header>
-        <picture>
-            <source media="(max-width: 799px)" srcset="images/logo96w.png">
-            <source media="(min-width: 800px)" srcset="images/logo128w.png">
-            <img src="images/logo128w.png" alt="Real Weather Today logo">
-        </picture>
-        <div class="title">
-            <h1>Real Weather Today</h1>
-            <h3>Whenever and Wherever You Need</h3>
-        </div>
-    </header>
-    <nav>
-        <ul class="navigation">
-            <li><a href="#" id="hamBtn"><i class="fas fa-bars"></i> Menu</a></li>
-            <li><a href="preston-6.html">Home</a></li>
-            <li><a href="#" class="active">Preston</a></li>
-            <li><a href="#">Soda Springs</a></li>
-            <li><a href="#">Fish Haven</a></li>
-            <li><a href="#">Storm Center</a></li>
-            <li><a href="#">Gallery</a></li>
+  <header>
+    <div class="img-box">
+      <img src="images/user.webp" alt="Photo of Samuel Turay. The author" title="Samuel Turay" width="500" height="350"
+        loading="lazy">
+    </div>
+    <h1>Samuel Turay</h1>
+  </header>
+
+  <nav>
+    <button id="menu"></button>
+    <ul class="navigation">
+      <li>
+        <a href="#">Home</a>
+
+      </li>
+      <li>
+        <a href="https://koigor97.github.io/wdd230/chamber/" target="_blank">Chamber</a>
+
+      </li>
+      <li>
+        <a href="https://koigor97.github.io/wdd230/week01/chamber-site-plan.html" target="_blank">Site Plan</a>
+
+      </li>
+      <li>
+        <a href="form.html">Form</a>
+      </li>
+
+    </ul>
+    <div aria-label="Light and dark mode toggle switch" role="switch" aria-checked="false" tabindex="0">
+      <span class="switch">
+        <span></span>
+      </span>
+    </div>
+  </nav>
+
+  <main>
+    <figure>
+      <picture>
+        <source media="(max-width: 400px)" srcset="images/hero-small.webp">
+        <source media="(max-width: 960px)" srcset="images/hero-medium.webp">
+        <img src="images/hero-large.webp" alt="Photo of Ghana Accra Temple" width="1080" height="720" loading="lazy">
+      </picture>
+      <figcaption>Ghana Accra Temple</figcaption>
+    </figure>
+
+    <h2>WDD 230: Web Frontend Development</h2>
+
+
+    <section class="info-box">
+      <div class="activity-sec card">
+        <h3>Learning activities</h3>
+        <ul id="link-box">
+          <!-- <li>
+            Week 01:
+            <a href="https://codepen.io/KoiMonga/pen/KKbWNpZ" target="_blank">
+              Codepen activity
+            </a>
+            <a href="https://koigor97.github.io/wdd230/week01/media-query.html" target="_blank">
+              Media-Query activity
+            </a>
+            <a href="https://koigor97.github.io/wdd230/week01/holygrail.html" target="_blank">
+              Holy Grail (refactor) activity
+            </a>
+          </li>
+          <li>
+            Week 02:
+            <a href="https://koigor97.github.io/wdd230/week02/design.html">Design learning activity</a>
+            <a href="https://codepen.io/KoiMonga/pen/PoXJRJz">Responsive Menu</a>
+            <a href="https://koigor97.github.io/wdd230/week02/bom.html" target="_blank">B.O.M - DOM activity</a>
+            <a href="https://koigor97.github.io/wdd230/chamber/" target="_blank">Chamber of Commerce Homepage</a>
+          </li>
+          <li>
+            Week 03:
+            <a href="week03/images/landscape.WEBP">WebP</a>
+            <a href="https://koigor97.github.io/wdd230/week03/lazyload.html" target="_blank">Lazy Loading Activity</a>
+            <a href="https://koigor97.github.io/wdd230/week03/responsive-images.html" target="_blank">Responsive Images activity</a>
+            <a href="https://koigor97.github.io/wdd230/week03/bom.html" target="_blank">LocalStorage activity - BOM</a>
+            <a href="https://koigor97.github.io/wdd230/chamber/discover.html" target="_blank">Chamber of Commerce Discover page</a>
+          </li>
+          <li>
+            Week 04:
+            <a href="https://codepen.io/KoiMonga/pen/KKbxNdM" target="_blank">Pseudo Classes - Codepen</a>
+            <a href="images/combinator.webp" target="_blank">CSS Combinators activity</a>
+            <a href="https://koigor97.github.io/wdd230/week04/tablebuild.html" target="_blank">HTML Table Activity</a>
+            <a href="https://koigor97.github.io/wdd230/week04/index.html" target="_blank">Forms</a>
+            <a href="https://koigor97.github.io/wdd230/chamber/join.html" target="_blank">Chamber of Commerce Join Page</a>
+          </li>
+          <li>
+            Week 05:
+            <a href="https://codepen.io/KoiMonga/pen/dywaOEJ" target="_blank">Psuedo Element - Codepen</a>
+            <a href="week05/new-ward-members.json" target="_blank">New Ward Members - JSON</a>
+            <a href="https://koigor97.github.io/wdd230/week05/prophets.html" target="_blank">Latter-Day Prophets</a>
+            <a href="https://koigor97.github.io/wdd230/week05/weather.html" target="_blank">Weather API</a>
+          </li>
+          <li>
+            Week 06:
+            <a href="#">[X]</a>
+          </li> -->
         </ul>
-    </nav>
-    <main>
-        <h2>Preston Idaho</h2>
-        <article class="hero">
-            <picture>
-                <source media="(max-width: 400px)" srcset="images/small.jpg">
-                <source media="(max-width: 600px)" srcset="images/medium.jpg">
-                <source media="(max-width: 800px)" srcset="images/large.jpg">
-                <img src="images/large.jpg" alt="hero image">
-            </picture>
-            <div class="hero-summary">
-                <h3>Weather Summary</h3>
-                <p>Currently: <span>Sunny</span></p>
-                <p>High: <span id="tempH">50</span>°F</p>
-                <p>Wind Chill: <span id="wChill"></span>°F</p>
-                <p>Humidity: <span>69</span>%</p>
-                <p>Wind Speed: <span id="wSpeed">12</span> mph</p>
-            </div>
-        </article>
-        <article class="forecast">
-            <h3>5 Day Forecast</h3>
-            <table>
-                <tr>
-                    <th>Wed</th>
-                    <th>Thu</th>
-                    <th>Fri</th>
-                    <th>Sat</th>
-                    <th>Sun</th>
-                </tr>
-                <tr>
-                    <td><i class="fas fa-sun fa-4x"></i></td>
-                    <td><i class="fas fa-sun fa-4x"></i></td>
-                    <td><i class="fas fa-sun fa-4x"></i></td>
-                    <td><i class="fas fa-sun fa-4x"></i></td>
-                    <td><i class="fas fa-sun fa-4x"></i></td>
-                </tr>
-                <tr>
-                    <td>89°F</td>
-                    <td>87°F</td>
-                    <td>78°F</td>
-                    <td>75°F</td>
-                    <td>72°F</td>
-                </tr>
-            </table>
-        </article>
-        <article class="blog">
-            <picture>
-                <source media="(max-width: 799px)" srcset="images/community377w.jpg">
-                <source media="(min-width: 800px)" srcset="images/community538w.jpg">
-                <img src="images/community538w.jpg" alt="a picture of community meeting">
-            </picture>
-            <h3>Founders Day Fresco</h3>
-            <p class="author">by Christian Soldevilla</p>
-            <p>
-                I was recently reflecting upon the founders 
-                day event held at Foundation Park each year. 
-                I have been taking the festival for granted 
-                and have not been properly engaging in perhaps 
-                the most popular community event of the year. 
-                In response, I contacted Ms. Sharon via email 
-                and expressed my desire to serve on the event 
-                committee. Well, you guessed it, the phone rings 
-                almost immediately and she promptly asks me to 
-                be the event committee chair. Literally, good 
-                grief! My appreciation for the years of dedicated, 
-                generous service of volunteers and sponsors has 
-                escalated beyond waht I thought I could fell for 
-                such a thing and ...
-            </p>
-            <a href="#">continue to full article</a>
-        </article>
-        <article class="contact-info">
-            <iframe class="map" id="map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28163.73619399447!2d-111.9033210029279!3d42.10001505535372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8754f78c7cda6c31%3A0xf1b3b4fc465a4a3f!2sPreston%2C%20ID%2083263!5e0!3m2!1sen!2sus!4v1590175225846!5m2!1sen!2sus"
-                width="450" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-                tabindex="0">
-            </iframe>
-            <div class="wrapper-info">
-                <h3>Real Weather Today</h3>
-                <div class="location">
-                    <p><i class="fas fa-map-marker-alt"></i> 30 N 1st E</p>
-                    <p>Prenston, ID 83263</p>
-                </div>
-                <p><i class="fas fa-phone-alt"></i> 999.999.999</p>
-                <p><i class="fas fa-envelope"></i> rweathertoday@rwt.com</p>
-                <ul>
-                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                </ul>
-            </div>
-        </article>
-    </main>
-    <footer>
-        <p><i class="far fa-copyright"></i> Real Weather Today | Attributions | Christian Soldevilla</p>
-        <p><span id="currentDate"></span></p>
-    </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-    <script>
-        WebFont.load({
-            google: {
-                families: ['Montserrat:300,400,700']
-            }
-        });
-    </script>
-    <script src="js/windchill.js"></script>
-    <script src="js/scripts.js"></script>
+      </div>
+
+      <div class="weather-sec card">
+        <h3>Information</h3>
+        <p>Pretoria, South Africa</p>
+        <p>Weather: <span class="weather-box"></span> <img class="weather-icon" src="" alt=""></p>
+        <p class="page-visit"></p>
+      </div>
+    </section>
+
+    <section class="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14370.874205228938!2d28.33450565!3d-25.779858299999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sza!4v1695939165652!5m2!1sen!2sza"
+        width="800" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      &copy;
+      <span id="year"></span>
+      .:|:. Samuel Turay ✌🏾 .:|:. Freetown - Sierra Leone 🇸🇱
+    </p>
+    <p>
+      Last Modification:
+      <span id="lastModified"></span>
+    </p>
+  </footer>
+  <script src="scripts/assignmentPortal.js"></script>
+  <script src="scripts/links.js"></script>
 </body>
+
 </html>
