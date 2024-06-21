@@ -266,8 +266,7 @@ margin-top: 100px;
 
   .dark{
     display: flex;
-    align-items: right;
-    justify-content: right;
+    
   }
 
   /*Allnav*/
@@ -375,8 +374,7 @@ margin-top: 100px;
   }
 
   .container {
-    align-items: baseline;
-    justify-content: baseline;
+    
 
     color: rgb(255, 0, 0);
     font-size: 2rem;
@@ -387,3 +385,16 @@ margin-top: 100px;
     
     
   }
+
+  a:link {
+    color: rgb(251, 255, 0);
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: rgb(255, 251, 0);
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
