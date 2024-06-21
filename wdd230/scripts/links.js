@@ -2,7 +2,7 @@
 
 const linkBox = document.getElementById('link-box');
 
-const baseUrl = 'https://makai-maetani.github.io/';
+const baseUrl = 'https://makai-maetani.github.io';
 const linksUrl = 'https://makai-maetani.github.io//wdd230/data/links.json';
 
 
