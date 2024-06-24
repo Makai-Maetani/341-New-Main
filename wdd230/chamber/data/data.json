@@ -5,84 +5,84 @@
             "address": "458 East 1492 North Orem Utah",
             "phone": "801-557-5863",
             "website": "https://beesteamstore.com/collections/apparel-1",
-            "images": "images/keller-williams-logo.webp"
+            "images": "images/.webp"
         },
         {
             "name": "Orem Utah Law Firm",
             "address": "120 1st Ave. West, Orem Utah",
             "phone": "801-253-5328",
             "website": "https://www.utah-lawfirm.com/",
-            "images": "images/pnpa.webp"
+            "images": "images/.webp"
         },
         {
             "name": "Utah Jewlery",
             "address": "2244 US 93 North Ste 102 , Orem Utah",
             "phone": "801-755-8400",
             "website": "https://www.thelandofsalt.com/collections/all-jewelry",
-            "images": "images/riddleslogo.webp"
+            "images": "images/.webp"
         },
         {
             "name": "Ocean Shave Ice",
             "address": "1103 S Main St, Orem Utah",
             "phone": "801-250-8784",
             "website": "https://www.oceanshavedice.com/",
-            "images": "images/helpful-village.webp"
+            "images": "images/.webp"
         },
         {
             "name": "Utah Asian Market",
             "address": "1203 U.S. Hwy 2, Orem Utah",
             "phone": "801-471-4045",
             "website": "http://asianmarketutah.com/",
-            "images": "images/navigate-logo.webp"
+            "images": "images/.webp"
         },
         {
             "name": "Garcias Market Utah",
             "address": "420 West 420 South, Orem Utah",
             "phone": "801-249-8929",
             "website": "https://garciasmkt.com/",
-            "images": "images/pure-west.webp"
+            "images": "images/.webp"
         },
         {
             "name": "Utah Real Estate",
             "address": "275 Corporate Dr Ste 300, Orem Utah",
             "phone": "801-752-8747",
             "website": "https://www.utahrealestate.com/index/public.index",
-            "images": "images/hrblock.webp"
+            "images": "images/.webp"
         },
         {
             "name": "Red Mountain Resort Spa",
             "address": "17 S Main St, Orem Utah",
             "phone": "801-257-9220",
             "website": "https://www.redmountainresort.com/",
-            "images": "images/flathead-beacon.webp"
+            "images": "images/.webp"
         },
         {
             "name": "Hotel Utah",
             "address": "4 Sunset Plaza, Suite 101, Orem Utah",
             "phone": "801-257-2255",
             "website": "https://hotelutah.com/",
-            "images": "images/express-logo.webp"
+            "images": "images/.webp"
         },
         {
             "name": "South Utah American Family Insurance",
             "address": "201 3rd Ave W, Orem Utah",
             "phone": "801-602-3375",
             "website": "https://www.amfam.com/",
-            "images": "images/codesk.webp"
+            "images": "images/.webp"
         },
         {
             "name": "Utah Auto Pros",
             "address": "131 N Main St, Orem Utah",
             "phone": "801-752-8812",
             "website": "https://www.utahautopros.com/",
-            "images": "images/intsy-prints.webp"
+            "images": "images/.webp"
         },
         {
             "name": "Bank of Utah",
             "address": "55 1st Ave, Orem Utah",
             "phone": "801-755-3144",
             "website": "https://www.bankofutah.com/",
-            "images": "images/super-one.webp"
+            "images": "chamber/images/bank.webp"
         }
     ]
 }
