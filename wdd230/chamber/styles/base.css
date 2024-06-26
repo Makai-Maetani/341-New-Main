@@ -581,6 +581,7 @@ label.cont-fields input {
     display: block;
     width: 50%;
     margin: 0 auto;
+    border-radius: 3rem;
     padding: 2rem;
 }
 .grid-view section hr {
