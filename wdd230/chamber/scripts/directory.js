@@ -32,6 +32,7 @@ fetch(dataURL)
         
         website.setAttribute("href", business.website);
         image.setAttribute("src", business.images);
+        console.log(business.images);
         image.setAttribute("alt", `Image of ${business.name}`);
         image.setAttribute("loading", "lazy");
        
