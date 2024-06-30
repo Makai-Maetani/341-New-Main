@@ -37,7 +37,7 @@
 </head>
 
 
-<body>
+<body onload="DefaultScreen()">
 
     <a id="menu" href="#"></a>
     <nav>
@@ -65,18 +65,19 @@
         <p class="daysOfVisit"></p>
 
        
-        
+        <div id="top-page-banner">
+            <div class="banner-content">
+                🤝🏼 Come join us for the chamber meet and greet Wednesday at 7:00 p.m.
+                <button class="bannerBtn" type="button">&times;</button>
+            </div>
+        </div>
     
     </header>
 
 
-    <div class="header">
-        <div id="banner" class="banner" role="alert">
-            <p>Attend the Chamber of Commerce meet and greet 🤝 on Wednesday at 7:00 p.m.</p>
-            <button id="closeBanner" class="close-button" aria-label="Close">×</button>
-        </div>
+    
 
-    </div>
+
     <hr>
 
     <div class="container">
@@ -116,6 +117,36 @@
             <p class="wind-speed"></p>
             <p class="wind-chill"></p>
         </section>
+
+        <h1 id="Para1">3 Days Weather Forecast</h1>
+        <p id="inputContainer"><input type="text" id="cityInput"></p>
+              
+        <h2 id="cityName">---Orem---</h2>
+    
+    
+    <div id = "weatherContainer">
+        <div id="iconsContainer">    
+            <div class = "icons">
+                <p class="weather" id="day1"></p>
+                <div class="image"><img src="dots.png" class="imgClass" id="img1"></div>
+                <p class="minValues" id="day1Min">Loading...</p>
+                <p class="maxValues" id="day1Max">Loading...</p>
+            </div>
+            <div class = "icons">
+                <p class="weather" id="day2"></p>
+                <div class="image"><img src="dots.png" class="imgClass" id="img2"></div>
+                <p class="minValues" id="day2Min">Loading...</p>
+                <p class="maxValues" id="day2Max">Loading...</p>
+            </div>
+            <div class = "icons">
+                <p class="weather" id="day3"></p>
+                <div class="image"><img src="dots.png" class="imgClass" id="img3"></div>
+                <p class="minValues" id="day3Min">Loading...</p>
+                <p class="maxValues" id="day3Max">Loading...</p>
+            </div>
+           
+        </div>
+    </div>
     </div>
 
 
@@ -178,6 +209,8 @@
     </script>
 
 <script src="scripts/numOfVisits.js"></script>
+<script src="scripts/threeWeather.js"></script>
+<script src="scripts/banner.js"></script>
 
 </body>
 </html>
