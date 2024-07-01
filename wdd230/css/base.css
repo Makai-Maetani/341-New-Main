@@ -14,13 +14,13 @@ body{
   }
 
   img{
-    border-radius: 5rem;
+    border-radius: 3rem;
     padding: 1rem;
 }
 
 .header img{
   max-height:500px;
-   
+  border-radius: 3rem;
     height:5rem;
     width:5rem;
 }
@@ -100,6 +100,7 @@ margin-top: 100px;
 .card img{
     width:100%;
     height: auto;
+    border-radius: 3rem;
 }
 
 
@@ -206,6 +207,7 @@ margin-top: 100px;
     font-size: larger;
     font-weight: bold;
     text-shadow: 2px 2px black;
+    border-radius: 2rem;
     
   }
 
