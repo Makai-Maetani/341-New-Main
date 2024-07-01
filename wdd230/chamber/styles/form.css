@@ -319,7 +319,7 @@ svg {
 .nav-links:hover {
     color: var(--secondary-color);
     background-color: var(--primary-color);
-    fill: var(--secondary-color);
+    
 }
 
 .nav-links svg {
@@ -342,9 +342,7 @@ svg {
     min-height: 4rem;
 }
 
-.menu-btn svg {
-    fill: var(--secondary-color);
-}
+
 
 .show-nav {
     display: block;
@@ -408,9 +406,7 @@ svg {
     box-shadow: var(--box-shadow-effect);
 }
 
-.social-links:hover {
-    fill: var(--default-color);
-}
+
 
 :where(nav, .header-intro, .socials-box) {
     background: var(--glass-effect-bg);
@@ -654,7 +650,7 @@ svg {
 .card svg {
     width: 5rem;
     height: 5rem;
-    fill: var(--primary-color);
+    
 }
 
 .card h3 {
@@ -736,9 +732,7 @@ footer ul {
     list-style: none;
 }
 
-footer svg {
-    fill: #444444d1;
-}
+
 
 .contact-box,
 .quick-link-box,
@@ -853,7 +847,7 @@ address a:hover,
 }
 
 .heading-intro svg {
-    fill: var(--secondary-color);
+    
     width: 3.5rem;
     height: 3.5rem;
 }
@@ -892,7 +886,6 @@ address a:hover,
 
 .calender .header .btns svg {
     cursor: pointer;
-    stroke: var(--optional-color);
 }
 
 .weekdays ul {
