@@ -261,10 +261,10 @@ margin-top: 100px;
     box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
   }
 
-  input:checked + label {
+  .dark input:checked + label {
     background: #242424;
   }
-  input:checked + label:after {
+  .dark input:checked + label:after {
     left:85px;
     transform: translateX(-100%);
     background: linear-gradient(180deg,#777,#3a3a3a);
