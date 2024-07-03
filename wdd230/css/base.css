@@ -16,6 +16,7 @@ body{
   img{
     border-radius: 3rem;
     padding: 1rem;
+    width: 100%;
 }
 
 .header img{
