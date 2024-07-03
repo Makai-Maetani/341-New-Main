@@ -299,6 +299,11 @@ margin-top: 100px;
     border-radius: 1rem;
   }
 
+  #iframe{
+    width: 500px;
+    height: 500px;
+  }
+
 
   /*Nav Menu*/
 
