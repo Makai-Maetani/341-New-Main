@@ -473,6 +473,42 @@ h1 {
 
  
 }
+
+@media only screen and (min-width: 40em) {
+    .navigation {
+      display: flex;
+    }
+    .navigation li {
+      display: block; /* change state in small view */
+      flex: 1 1 100%;
+    }
+    .navigation a {
+      text-align: center;
+    }
+    #menu {
+      display: none;
+    }
+  }
+
+
+
+  /* Directory Stuff*/
+
+
+
+.top-page-banner {
+ 
+  color:rgb(0, 0, 0);
+
+}
+
+.banner-content {
+ color: rgb(255, 217, 0);
+}
+
+.bannerBtn {
+  color: white;
+ }
   
 
 
