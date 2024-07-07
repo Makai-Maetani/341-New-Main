@@ -150,11 +150,11 @@ img{
 :root {
     /* Project colors */
     --primary-color: #00113e;
-    --secondary-color: #ffbe37;
+    --secondary-color: #fcfaa2;
     --tertiary-color: #edeefd;
     --default-color: #eef0f4;
     --optional-color: #d68c45;
-    --optional2-color: #f90a39;
+    --optional2-color: #3cff00;
     --calnder-text-color: #1d1d1d;
     --bg-color: #f1f1fb;
 
@@ -277,13 +277,15 @@ h1 {
 }
 
 .form-container form {
-    background: var(--secondary-color);
+    /* background: var(--secondary-color); */
+    background-image: linear-gradient(180deg, #C61212, #3E1270);
     backdrop-filter: var(--blur-effect);
     width: 100%;
     padding-inline: 1em;
     padding-block-start: .75em;
     padding-block-end: 1.5em;
     border-radius: .5rem;
+    color: white;
 
     display: grid;
 }
@@ -375,7 +377,7 @@ h1 {
 }
 
 .benefits-box div {
-    background-color: #fff;
+    /* background-color: #fff; */
     width: 80%;
     padding-block: 1.5em;
     padding-inline: 1.5em;
