@@ -1,20 +1,20 @@
 [
     {
         "id": "1",
-        "level": "Gold",
+        "level": "Gold 🥇",
         "name": "Hakurei Reimu"
 
     },
     {
         "id": "2",
-        "level": "Silver",
+        "level": "Silver 🥈",
         "name": "Hina Cirno"
 
     },
     {
-        "id": "1",
-        "level": "Bronze",
-        "name": "Young Sheldon"
+        "id": "3",
+        "level": "Bronze 🥉",
+        "name": "Reisen Inaba"
 
     }
 ]

@@ -1,6 +1,6 @@
 // Script for Weather and Wind Chill **I removed the previous codes and added new ones based on what I learned in Week 10 lesson
 
-apiURL = 'https://api.openweathermap.org/data/2.5/weather?id=5660340&appid=caa8540702ef690bc84e562267149524&units=imperial';
+apiURL = 'https://api.openweathermap.org/data/2.5/weather?id=5660340&appid=1abd21634ef125e842688f25cdfb277a&units=imperial';
 
 fetch(apiURL)
     .then((response) => response.json())
