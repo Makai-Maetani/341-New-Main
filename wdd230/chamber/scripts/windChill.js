@@ -33,6 +33,6 @@ fetch(apiURL)
         if (t <= 50 && s > 3) {
             return windchill
         } else {
-            return `N/A`
+            return windchill
         }
     }

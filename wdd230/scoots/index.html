@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoots</title>
+    <meta name="description" content="Scoots Assignment for Makai in WDD 230: Web Frontend Development at Brigham Young University - Idaho">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/medium.css">
+    <link rel="stylesheet" href="styles/larger.css">
+ 
+    
+    <!--medium 1fr Large 3 fr -->
+
+    
+    
+    <script src="scripts/responsiveMenu.js" defer></script>
+    
+    
+  
+    
+    <meta property="og:Author" content="Makai Maetani">
+    <meta property="og:url" content="https://makai-maetani.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Scoots assingment">
+    <meta property="og:description" content="Scoots Assignment for Makai in WDD 230: Web Frontend Development at Brigham Young University - Idaho">
+    <meta property="og:image" content="https://images.app.goo.gl/2t1ZfUckDHaBZJxK8">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Chamber">
+    <meta name="author" content="Makai Maetani">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="type" content="website">
+
+</head>
+
+<!-- other ways to do besideds on load -->
+
+<body>
+
+    <a id="menu" href="#"></a>
+    <nav>
+	    <ul class="navigation">
+		    <li><a href="index.html">Home</a></li>
+		    <li><a href="rentals.html">Rentals</a></li>
+		    <li><a href="reservations.html">Reservations</a></li>
+		    <li><a href="contact.html">Contact</a></li>
+            <!-- <li><a href="twitter.com">Twitter</a></li>
+            <li><a href="instagram.com">Instagram</a></li>
+            <li><a href="Facebook.com">Facebook</a></li> -->
+
+           
+	    </ul>
+    </nav>
+
+    <header class="header">
+       
+        <h1>Orem Utah Chamber of Commerce</h1>
+
+
+        
+        <p class="daysOfVisit"></p>
+       
+        <div id="announcementBanner" class="aBanner">
+            <div>
+                <strong>Todays max temp:</strong>
+            </div>
+            <p id="max-temp"></p>
+            <button class="close-button" onclick="closeBanner()">X</button>
+        </div>
+
+       
+        <!-- <div id="top-page-banner">
+            <div class="banner-content">
+                🤝🏼 Come join us for the chamber meet and greet Wednesday at 7:00 p.m.
+                <button class="bannerBtn" type="button">&times;</button>
+            </div>
+        </div> -->
+        <div class="social">
+        
+            <a href="https://www.facebook.com/">
+                <img src="images/facebook.webp" alt="facebook">
+            </a>
+        
+            <a href="https://www.twitter.com/">
+                <img src="images/twitter.webp" alt="twitter">
+            </a>
+        
+            <a href="https://www.instagram.com/">
+                <img src="images/instagram.webp" alt="instagram">
+            </a>
+            
+        
+            </div>
+    
+    </header>
+    
+    
+
+      <hr>
+
+      
+      <div class="contact">
+        <h2>Contact Information</h2>
+            <p>Phone: 555-555-5555</p>
+            <p>Email: Scoots@Wdd230.com</p>
+            <p>Location: 144 2HU street Cozumel Mexico</p>
+            
+    </div>
+
+    
+
+    
+    <!-- <div class="container">
+        
+        <section>
+        
+        <img src="images/w06Hero.webp" alt="W06 hero Image of meeting" style="width:100%;">
+           
+        </section>
+
+        <div class="centered">Orem Utah Chamber</div>
+ 
+       
+    </div> -->
+      
+   
+
+    <div class="button">
+                
+              
+                
+        <a href ="rentals.html" class="btn-1">Rent Today</a>
+        
+        
+        <!--<button class="btn-2">LIKE</button>
+        <button class="btn-2">I DONT LIKE</button> -->
+    </div> 
+
+    
+
+    <div class="weather">
+        <h2>Weather</h2>
+
+        <section id="weather">
+            <h2> Weather Information</h2>
+            <h4 id="weather-city"></h4>
+            <div class="weather-card">
+                <h4>Today</h4>
+                <h4><span id="current-temp"></span> </h4>
+                <figure>
+                    <img src="images/dot.webp" id="weather-icon" alt="Weather Icon">
+                    <figcaption id="fig1" class="weather-fig-captions"></figcaption>
+                </figure>
+                <h5>Humidity</h5>
+                <figure>
+                <figcaption id="fig2" class="weather-fig-captions"></figcaption>
+                 </figure>
+            </div>
+            <div class="weather-card">
+                <h2>Weather Forecast</h2>
+                <h4><span id="forecast-day-1"></span> </h4>
+                <h4><span id="forecast-temp-1"></span> </h4>
+                <figure>
+                    <img src="images/dot.webp" id="weather-icon1" class="w-icon" alt="weather icon">
+                    <figcaption id="fig3" class="weather-fig-captions"></figcaption>
+                </figure>
+            </div>
+        </section>
+
+    </div>
+
+    
+    
+
+    <!-- <div class="news">
+        <div>
+        <h2>Current Events</h2>
+        <p>UTAHS EXPECTING SOME HEAVY WEATHER CONDITIONS BE CAREFUL. The Orem and Provo areas are being targeted by many heavy storms right now. Be safe out here</p>
+        </div>
+
+        <div>
+            <h3>Json Member Data</h3>
+            <p id="data"></p>
+        </div>
+
+    </div>  -->
+
+    
+    
+    <main>
+
+     
+
+
+       <div id="rental-types">
+        <h2 class="rental-types-tag">Rental types summary</h2>
+        <h3 class="rental-types-tag">Scooters</h3>
+            <div class="card-container">
+                <div class="card" id="card1">
+                    <img src="images/lake.webp" alt="Honda Metropolitan"> 
+                    
+                    <h3>Honda Metropolitan</h3>
+                    <p>Speed: 49cc</p>
+                    <p>Seating: 1 person</p>
+                    <!-- <a href="https://hotelutah.com/" class="btn">Company 1</a> -->
+                </div>
+    
+                <div class="card" id="card2">
+                    <img src="images/lake.webp" alt="Honda Dio">
+                    
+                    <h3>Honda Dio</h3>
+                    <p>Speed: 110cc</p>
+                    <p>Seating: 2 person</p>
+                    <!-- <a href="http://asianmarketutah.com/" class="btn">Asian Market</a> -->
+                </div>
+    
+                <div class="card" id="card3">
+                    <img src="images/lake.webp" alt="Honda PCX150">
+                    
+                    <h3>Honda PCX150</h3>
+                    <p>Speed: 149cc</p>
+                    <p>Seating: 2 person</p>
+                    <!-- <a href="https://www.oceanshavedice.com/" class="btn">Company 3</a> -->
+                </div>
+    
+           </div>
+            <h3 class="rental-types-tag">Side by Side ATVs</h3>
+
+
+            <div class="atvContainer">
+                <div class="atvCard" id="card4">
+                    <img src="images/lake.webp" alt="Honda Metropolitan"> 
+                    
+                    <h3>Honda Pioneer 1000</h3>
+                    <p>Seating: 4 person</p>
+                    <!-- <a href="https://hotelutah.com/" class="btn">Company 1</a> -->
+                </div>
+            </div>       
+           
+            <h3 class="rental-types-tag">Jeeps</h3>
+
+
+
+            <div class="card-container">
+                <div class="card" id="card5">
+                    <img src="images/lake.webp" alt="Honda Metropolitan"> 
+                    
+                    <h3>Jeep Wrangler</h3>
+                    <p>Features: 4 door manuel with A/C </p>
+                    <p>Seating: 5 person</p>
+                    <!-- <a href="https://hotelutah.com/" class="btn">Company 1</a> -->
+                </div>
+    
+                <div class="card" id="card6">
+                    <img src="images/lake.webp" alt="Honda Dio">
+                    
+                    <h3>Jeep Wrangle</h3>
+                    <p>Features: 2 door - open air - manuel</p>
+                    <p>Seating: 4 person</p>
+                    <!-- <a href="http://asianmarketutah.com/" class="btn">Asian Market</a> -->
+                </div>
+    
+                
+    
+           </div>
+        
+        </div>
+
+    
+    </main>
+   
+
+
+    <footer class="footer">
+        <p>
+            &copy; 2024 | Makai Maetani | BYUI Online Learning
+        </p>
+        <p class="last-update" id="lastModified"></p>
+    </footer>
+    <script src="scripts/lastModified.js" defer></script>
+    <!-- <script defer src="scripts/popMessage.js"></script> -->
+
+
+<script src="scripts/weather.js"></script>
+<script src="scripts/numOfVisits.js"></script>
+
+
+
+</body>
+</html>
