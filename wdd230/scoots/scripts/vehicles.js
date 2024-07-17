@@ -1,5 +1,5 @@
 const url =
-  "https://raw.githubusercontent.com/makai-maetani/wdd230/main/scoots/data/vehicles.json";
+  "https://makai-maetani.github.io//wdd230/scoots/data/vehicles.json";
 const table = document.querySelector("#table");
 
 async function getVehicleData() {
