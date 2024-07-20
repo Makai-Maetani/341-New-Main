@@ -50,7 +50,7 @@ body{
   border: 4mm ridge rgb(0, 0, 0);
 }
 
-.gmap{
+/* .gmap{
   display: flex;
  justify-content: center;
 
@@ -59,7 +59,7 @@ body{
   padding: 1rem;
   background-image: linear-gradient(180deg, #C61212, #3E1270);
   margin: 1rem;
-  /*TA Help*/
+  
   margin-left: auto;
   margin-right: auto;
   border-radius: 1rem;
@@ -69,7 +69,7 @@ body{
   width: 50rem;
   height: 25rem;
   border-radius: 1rem;
-}
+} */
 
 .contact{
   display: flex;
@@ -110,6 +110,16 @@ flex-wrap: wrap;
     padding: 10px;
     color: white;
 }
+
+.card iframe{
+  width: 14rem;
+  height: 9rem;
+  border-radius: 1rem;
+  margin: .1rem;
+  padding: .1rem;
+  justify-content: center;
+  align-items: center;
+} 
 
 .atvContainer{
   display: flex;
