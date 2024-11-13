@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
+$primaryLink: rgb(121,121,121);
+$primaryUl: #bbbbbb;
+$primaryBg: white;
+$primaryText: rgb(0, 0, 0);
+
+@mixin flexCenter{
+  display: block;
+    margin: 0;
+    padding: 1rem 2rem;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: $primaryBg;
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: "Lora";
+  color: $primaryText;
+}
+
+header{
+
+
+
+    h1{
+        font-size: 80px;
+        color: $primaryText;
+    }
+}
+
+header h1{
+    font-size: 80px;
+    color: $primaryText;
+}
+
+header a{
+    color: $primaryText;
+    text-decoration: none;
+}
+
+header nav{
+    color: $primaryLink;
+    font-size: 2rem;
+}
+
+nav{
+    font-family: "Lora";
+  
+  }
+
+
+ul {
+    border-top: 1px solid $primaryUl;
+  list-style: none;
+  border-bottom: 1px solid $primaryUl;
+} 
+
+li{
+    display: inline-block;
+    color: $primaryLink;
+    margin: 1.5rem;
+    
+}
+
+/* links */
+a{
+    color: $primaryLink;
+}
+
+/* nav links */
+
+
+/* header */
+
+header{
+    text-align: center;
+}
+
+nav {
+ 
+  text-align: right;
+}
+
+
+
+nav li {
+  padding: 0.5rem;
+}
+
+/* main */
+main {
+  width: 90%;
+  margin: 2rem auto;
+}
+
+/* article cards */
+article {
+  background-color: $primaryBg;
+ 
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+article a{
+    text-align: center;
+}
+
+.post-date {
+  color: $primaryText;
+  margin: 1rem auto -1rem;
+  text-align: left;
+  border-right: 1px solid $primaryText;
+}
+
+.post-content {
+  margin: 0 auto;
+}
+
+article figure {
+  margin: 0 auto;
+  text-align: center;
+}
+
+article img {
+  width: 25%;
+  margin: 0 auto;
+  
+}
+
+
+
+/* smaller (screen)s */
+@media (screen) and (max-width: 640px) {
+  
+
+  header {
+    @include flexCenter();
+  }
+
+  article {
+    padding: 2rem;
+  }
+
+  ul {
+    
+    list-style: none;
+  }
+  
+  li{
+     text-align: center
+  }
+
+  article img{
+    width: 50%;
+  }
+  
+}
+

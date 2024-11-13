@@ -1,6 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
-
-
 body {
   font-family: Helvetica, Arial, sans-serif;
   background-color: white;
@@ -10,62 +8,59 @@ body {
 h1,
 h2 {
   font-family: "Lora";
+  color: rgb(0, 0, 0);
 }
 
-header h1{
-    font-size: 80px;
-    color: black;
+header h1 {
+  font-size: 80px;
+  color: rgb(0, 0, 0);
 }
 
-header a{
-    color: black;
-    text-decoration: none;
+header h1 {
+  font-size: 80px;
+  color: rgb(0, 0, 0);
 }
 
-header nav{
-    color: rgb(121, 121, 121);
-    font-size: 2rem;
+header a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
 }
 
-nav{
-    font-family: "Lora";
-  
-  }
-
-
-ul {
-    border-top: 1px solid #bbbbbb;
-  list-style: none;
-  border-bottom: 1px solid #bbbbbb;
-} 
-
-li{
-    display: inline-block;
-    color: rgb(121, 121, 121);
-    margin: 1.5rem;
-    
-}
-
-/* links */
-a{
-    color: rgb(121, 121, 121);
-}
-
-/* nav links */
-
-
-/* header */
-
-header{
-    text-align: center;
+header nav {
+  color: rgb(121, 121, 121);
+  font-size: 2rem;
 }
 
 nav {
- 
-  text-align: right;
+  font-family: "Lora";
 }
 
+ul {
+  border-top: 1px solid #bbbbbb;
+  list-style: none;
+  border-bottom: 1px solid #bbbbbb;
+}
 
+li {
+  display: inline-block;
+  color: rgb(121, 121, 121);
+  margin: 1.5rem;
+}
+
+/* links */
+a {
+  color: rgb(121, 121, 121);
+}
+
+/* nav links */
+/* header */
+header {
+  text-align: center;
+}
+
+nav {
+  text-align: right;
+}
 
 nav li {
   padding: 0.5rem;
@@ -80,20 +75,19 @@ main {
 /* article cards */
 article {
   background-color: white;
- 
   margin: 0 auto 2rem;
   text-align: center;
 }
 
-article a{
-    text-align: center;
+article a {
+  text-align: center;
 }
 
 .post-date {
   color: rgb(0, 0, 0);
   margin: 1rem auto -1rem;
   text-align: left;
-  border-right: 1px solid #000000;
+  border-right: 1px solid rgb(0, 0, 0);
 }
 
 .post-content {
@@ -110,34 +104,23 @@ article img {
   margin: 0 auto;
 }
 
-
-
 /* smaller (screen)s */
 @media (screen) and (max-width: 640px) {
-  
-
   header {
     display: block;
     margin: 0;
     padding: 1rem 2rem;
   }
-
   article {
     padding: 2rem;
   }
-
   ul {
-    
     list-style: none;
   }
-  
-  li{
-     text-align: center
+  li {
+    text-align: center;
   }
-
-  article img{
+  article img {
     width: 50%;
   }
-  
-}
-
+}/*# sourceMappingURL=main.css.map */
