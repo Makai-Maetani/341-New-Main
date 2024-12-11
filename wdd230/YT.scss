@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
+$primaryLink: rgb(121,121,121);
+$primaryUl: #bbbbbb;
+$primaryBg: white;
+$primaryText: rgb(255, 255, 255);
+
+body{
+    font-family: Helvetica, Arial, sans-serif;
+    background-image: linear-gradient(90deg, rgba(115, 31, 128,0.23) 0%, rgba(115, 31, 128,0.23) 14.286%,rgba(60, 22, 121,0.23) 14.286%, rgba(60, 22, 121,0.23) 28.572%,rgba(32, 17, 118,0.23) 28.572%, rgba(32, 17, 118,0.23) 42.858%,rgba(87, 26, 125,0.23) 42.858%, rgba(87, 26, 125,0.23) 57.144%,rgba(170, 40, 135,0.23) 57.144%, rgba(170, 40, 135,0.23) 71.43%,rgba(197, 45, 138,0.23) 71.43%, rgba(197, 45, 138,0.23) 85.716%,rgba(142, 36, 131,0.23) 85.716%, rgba(142, 36, 131,0.23) 100.002%),linear-gradient(135deg, rgba(115, 31, 128,0.23) 0%, rgba(115, 31, 128,0.23) 14.286%,rgba(60, 22, 121,0.23) 14.286%, rgba(60, 22, 121,0.23) 28.572%,rgba(32, 17, 118,0.23) 28.572%, rgba(32, 17, 118,0.23) 42.858%,rgba(87, 26, 125,0.23) 42.858%, rgba(87, 26, 125,0.23) 57.144%,rgba(170, 40, 135,0.23) 57.144%, rgba(170, 40, 135,0.23) 71.43%,rgba(197, 45, 138,0.23) 71.43%, rgba(197, 45, 138,0.23) 85.716%,rgba(142, 36, 131,0.23) 85.716%, rgba(142, 36, 131,0.23) 100.002%),linear-gradient(0deg, rgba(115, 31, 128,0.23) 0%, rgba(115, 31, 128,0.23) 14.286%,rgba(60, 22, 121,0.23) 14.286%, rgba(60, 22, 121,0.23) 28.572%,rgba(32, 17, 118,0.23) 28.572%, rgba(32, 17, 118,0.23) 42.858%,rgba(87, 26, 125,0.23) 42.858%, rgba(87, 26, 125,0.23) 57.144%,rgba(170, 40, 135,0.23) 57.144%, rgba(170, 40, 135,0.23) 71.43%,rgba(197, 45, 138,0.23) 71.43%, rgba(197, 45, 138,0.23) 85.716%,rgba(142, 36, 131,0.23) 85.716%, rgba(142, 36, 131,0.23) 100.002%),linear-gradient(90deg, rgb(128, 128, 128),rgb(23, 23, 23));
+    margin: 0;
+    text-align: center;
+}
+
+h1,
+h2 {
+//   font-family: "Lora";
+  color: $primaryText;
+  text-shadow: 2px 2px #000000;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #9c04aa;
+    color: white;
+  }
+
+  
