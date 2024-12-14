@@ -91,3 +91,28 @@
     transform: scale(0.9);
     transition: 1s ease;
     }
+
+
+    h1, h2 {
+      margin: 0;
+      font-family: Helvetica, Arial, sans-serif;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      background: -webkit-linear-gradient(#ffffff, #eeff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    }
+    p{
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #ffffff;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+       text-align: center;
+       
+       border-radius: 10px;
+       
+    }
