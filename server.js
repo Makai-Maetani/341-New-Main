@@ -1,38 +1,3 @@
-// //Express Web Server
-
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const app = express();
-
-// //const mongodb = require('./db/connect');
-
-// mongoose.connect('mongodb+srv://kaibackvalley:Admin@cluster340.kkwtjbb.mongodb.net/contacts');
-
-// const UserSchema = new mongoose.Schema({
-//   name: String,
-//   age: Number
-// });
-
-// const UserModel = mongoose.model("users", UserSchema);
-
-// app.listen(3001, () =>{
-//   console.log("Server is running");
-// });
-
-// app.get("/getUsers", (req, res) => { 
-//   res.json(UserModel.find());
-// });
-
-// app.get('/', (req, res) => {
-//   res.send("Makai Maetani");
-// });
-
-// const port = 3000;
- 
-// app.listen(process.env.PORT || port, () => {
-//   console.log('Web Server is listening at port ' + (process.env.PORT || port));
-// });
-
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config(); // Load .env variables
@@ -60,16 +25,39 @@ const Contact = mongoose.model("Contact", contactSchema);
 app.get("/", async (req, res) => {
   try {
     const contacts = await Contact.find();
-    res.json(contacts);
+
+   
+    const contactList = contacts.map(c => 
+      `${c.firstName} ${c.lastName} - ${c.email} - Favorite Color: ${c.favoriteColor} - Birthday: ${c.birthday}`
+    ).join('\n');
+
+    
+    const responseText = `${contactList}\n\nNEW CONTACTS`;
+
+    res.type('text/plain').send(responseText); 
   } catch (err) {
     res.status(500).json({ error: "Error fetching contacts" });
   }
 });
 
-app.get('/', (req, res) => {
-  res.send("Makai Maetani");
+app.post('/contacts', async (req, res) => {
+  const { firstName, lastName, email, favoriteColor, birthday } = req.body;
+
+  if (!firstName || !lastName || !email || !favoriteColor || !birthday) {
+    return res.status(400).json({ error: 'All fields are required' });
+  }
+
+  try {
+    const newContact = new Contact({ firstName, lastName, email, favoriteColor, birthday });
+    const savedContact = await newContact.save();
+    res.status(201).json({ id: savedContact._id });
+  } catch (err) {
+    res.status(500).json({ error: 'Error creating contact' });
+  }
 });
 
+
+// Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log('Web Server is listening at port ' + port);

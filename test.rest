@@ -1,0 +1,10 @@
+POST http://localhost:3000/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Patchoulii",
+  "lastName": "Knowledge",
+  "email": "ScarletMansion@gmail.com",
+  "favoriteColor": "Purple",
+  "birthday": "09/01/2002"
+}
