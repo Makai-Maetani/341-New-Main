@@ -56,6 +56,49 @@ app.post('/contacts', async (req, res) => {
   }
 });
 
+app.put('/contacts/:id', async (req, res) => {
+  const { id } = req.params;
+  const { firstName, lastName, email, favoriteColor, birthday } = req.body; 
+
+  
+  if (!firstName || !lastName || !email || !favoriteColor || !birthday) {
+    return res.status(400).json({ error: 'All fields are required' });
+  }
+
+  try {
+    const updatedContact = await Contact.findByIdAndUpdate(
+      id, 
+      { firstName, lastName, email, favoriteColor, birthday }, 
+      { new: true } 
+    );
+
+    if (!updatedContact) {
+      return res.status(404).json({ error: 'Contact not found' });
+    }
+
+    // Send 204
+    res.status(204).send();
+  } catch (err) {
+    res.status(500).json({ error: 'Error updating contact' });
+  }
+});
+
+app.delete('/contacts/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deletedContact = await Contact.findByIdAndDelete(id);
+
+    if (!deletedContact) {
+      return res.status(404).json({ error: 'Contact not found' });
+    }
+
+    res.status(200).json({ message: 'Contact deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ error: 'Error deleting contact' });
+  }
+});
+
 
 // Start the server
 const port = process.env.PORT || 3000;
