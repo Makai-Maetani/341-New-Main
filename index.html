@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact List</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      color: white;
+      background: linear-gradient(to bottom, #000000, #10013b);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+    }
+    .contact {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .top-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.search-bar {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 200px;
+}
+
+.add-contact-btn {
+  padding: 6px 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-contact-btn:hover {
+  background-color: #666;
+}
+
+    @property --＠color-1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: hsl(98 100% 62%);
+}
+
+@property --＠color-2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: hsl(204 100% 59%);
+}
+
+/* keyframes that change the color variable */
+@keyframes gradient-change {
+  to {
+    --＠color-1: hsl(210 100% 59%);
+    --＠color-2: hsl(310 100% 59%);
+  }
+}
+
+article {
+  /* apply variable changes over time */
+  animation: gradient-change 2s linear infinite alternate;
+  
+  background: linear-gradient(
+    /* 
+      in oklch produces more vibrant gradient results 
+      learn more https://developer.chrome.com/docs/css-ui/access-colors-spaces#color_interpolation
+    */
+    to right in oklch, 
+    /* use the variables in a gradient (or wherever!) */
+    var(--＠color-1), 
+    var(--＠color-2)
+  );
+  
+  /* old browser support */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* modern browser version */
+  background-clip: text;
+  color: transparent;
+
+  
+}
+
+button {
+  margin-left: 10px;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  background-color: #444;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #666;
+}
+  </style>
+</head>
+<body>
+
+    <div class="top-controls">
+  <input type="text" placeholder="Search..." class="search-bar">
+  <button class="add-contact-btn">+ Add Contact</button>
+</div>
+
+    <article>
+    <h1>CURRENT CONTACTS</h1>
+    </article>
+  
+  <div id="contacts"></div>
+
+  <script>
+    fetch('/api/contacts')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('contacts');
+        data.forEach(c => {
+          const div = document.createElement('div');
+          div.className = 'contact';
+          div.innerHTML = `
+            ${c.firstName} ${c.lastName} - ${c.email} - Favorite Color: ${c.favoriteColor} - Birthday: ${c.birthday}
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+            `;
+          container.appendChild(div);
+        });
+      })
+      .catch(err => {
+        document.getElementById('contacts').textContent = 'Failed to load contacts.';
+      });
+  </script>
+</body>
+</html>

@@ -13,18 +13,19 @@
 
 # Update Contact
 
-# PUT http://localhost:3000/contacts/
+# PUT http://localhost:3000/contacts/6822e8b33228ffb22add1571
 # Content-Type: application/json
 
 # {
 #   "firstName": "Patchoulii",
 #   "lastName": "Knowledge",
-#   "email": "ScaletMansion@gmail.com",
+#   "email": "Knowledge@gmail.com",
 #   "favoriteColor": "Dark Purple",
-#   "birthday": "01/18/2004"
+#   "birthday": "01/18/2008"
 # }
 
 
 #Delete Contact
 
-# DELETE http://localhost:3000/contacts/
+# DELETE http://localhost:3000/contacts/6822e8b33228ffb22add1571
+
