@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recipe List List</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  </style>
+</head>
+<body>
+
+    <div class="top-controls">
+  <!-- <input type="text" placeholder="Search..." class="search-bar"> -->
+  <button class="add-contact-btn">+ Add Recipe</button>
+</div>
+
+    <article>
+    <h1>Recipes</h1>
+    </article>
+  
+  <div id="contacts"></div>
+
+  <script>
+    fetch('/api/contacts')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('contacts');
+        data.forEach(c => {
+          const div = document.createElement('div');
+          div.className = 'contact';
+          div.innerHTML = `
+            - Creator: ${c.firstName} - Instructions: ${c.lastName} - Baking time: ${c.email} - Ingredients: ${c.favoriteColor} - Country Of Origin: ${c.birthday}
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+            `;
+          container.appendChild(div);
+        });
+      })
+      .catch(err => {
+        document.getElementById('contacts').textContent = 'Failed to load contacts.';
+      });
+  </script>
+
+<!-- Contact Form Modal -->
+<div id="contactModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Add New Contact</h2>
+    <form id="contactForm">
+      <input type="text" name="firstName" placeholder="Chef Name" required />
+      <input type="text" name="lastName" placeholder="Instructions" required />
+      <input type="text" name="email" placeholder="Baking Time" required />
+      <input type="text" name="favoriteColor" placeholder="Ingredients" required />
+      <input type="text" name="birthday" placeholder="Country of Origin" required />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
