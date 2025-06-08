@@ -3,15 +3,39 @@ const mongoose = require('mongoose');
 const path = require('path');
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-require('dotenv').config();
+const bcrypt = require('bcrypt');
+const dotenv = require('dotenv');
+const expressLayouts = require('express-ejs-layouts');
+const session = require('express-session');
+
+dotenv.config();
 
 const app = express();
-app.use(express.json());
 
-// Serve static files
+// === View Engine Setup ===
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(expressLayouts); // enable layout support
+app.set('layout', 'layout'); // default layout file is views/layout.ejs
+
+// === Middleware ===
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Swagger setup
+app.use(session({
+  secret: 'your-secret-key', 
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
+
+
+// === Swagger Setup ===
 const swaggerOptions = {
   swaggerDefinition: {
     info: {
@@ -27,14 +51,10 @@ const swaggerOptions = {
   },
   apis: ['./server.js'], // Points to where your API docs are located
 };
-
-// Initialize swagger-jsdoc
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
-
-// Setup Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// Connect to MongoDB
+// === MongoDB Connection ===
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -42,7 +62,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 .then(() => console.log("MongoDB connected"))
 .catch(err => console.error("MongoDB connection error:", err));
 
-// Define the contact schema and model
+// === Mongoose Models ===
 const contactSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
@@ -50,15 +70,109 @@ const contactSchema = new mongoose.Schema({
   favoriteColor: String,
   birthday: String
 });
-
 const Contact = mongoose.model("Contact", contactSchema);
 
-// Serve index.html on root route
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+const accountSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true }, // will be hashed
+  email: { type: String, required: true, unique: true },
+  birthdate: { type: Date, required: true }
+});
+const Account = mongoose.model('Account', accountSchema);
+
+// === Routes ===
+
+// Home page
+app.use((req, res, next) => {
+  console.log('Session:', req.session);
+  next();
 });
 
-// API endpoints for contacts
+
+app.get('/', (req, res) => {
+  res.render('home'); // don't pass user manually
+});
+
+app.get('/login', (req, res) => {
+  if (req.session.user) return res.redirect('/'); // redirect if already logged in
+  res.render('login'); // render login.ejs
+});
+
+
+
+
+app.get('/signup', (req, res) => {
+  if (req.session.user) return res.redirect('/');
+  res.render('signup');
+});
+
+
+
+// logout
+app.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      return res.status(500).send('Error logging out');
+    }
+    res.redirect('/');
+  });
+});
+
+
+// Handle signup form submission
+app.post('/signup', async (req, res) => {
+  const { username, password, email, birthdate } = req.body;
+
+  try {
+    const existingUser = await Account.findOne({ username });
+    if (existingUser) {
+      return res.status(400).send('Username already taken');
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new Account({
+      username,
+      password: hashedPassword,
+      email,
+      birthdate
+    });
+
+    await newUser.save();
+    res.redirect('/login');
+  } catch (err) {
+    console.error('Signup error:', err);
+    res.status(500).send('Internal server error');
+  }
+});
+
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    const user = await Account.findOne({ username });
+    if (!user) {
+      return res.redirect('/login?error=1');
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      return res.redirect('/login?error=1');
+    }
+
+    req.session.user = {
+      id: user._id,
+      username: user.username
+    };
+
+    return res.redirect('/?success=1');
+  } catch (err) {
+    console.error('Login error:', err);
+    return res.redirect('/login?error=1');
+  }
+});
+
+
 
 /**
  * @swagger
@@ -235,7 +349,17 @@ app.delete('/contacts/:id', async (req, res) => {
   }
 });
 
-// Start the server
+// === Old test signup console log route (commented out) ===
+// app.post('/auth/signup', (req, res) => {
+//   const { username, password, email, birthdate } = req.body;
+
+//   // TODO: Add real validation and database logic here
+//   console.log("Signup data:", { username, password, email, birthdate });
+
+//   res.send('Signup successful!'); // Or redirect to login/dashboard
+// });
+
+// === Start Server ===
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log('Web Server is listening at port ' + port);
