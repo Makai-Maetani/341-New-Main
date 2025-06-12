@@ -11,6 +11,16 @@ function openModal() {
   modal.classList.remove('hidden');
 }
 
+// Show alert on login failure/success (moved from inline <script>)
+const params = new URLSearchParams(window.location.search);
+if (params.get('error')) {
+  alert('Wrong username or password.');
+}
+if (params.get('success')) {
+  alert('Successfully logged in!');
+}
+
+
 // Hide modal
 function closeModal() {
   modal.classList.add('hidden');

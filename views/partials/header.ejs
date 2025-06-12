@@ -1,0 +1,9 @@
+<div class="top-controls">
+  <% if (user) { %>
+    <span>Welcome, <%= user.username %>!</span>
+    <a href="/logout" class="login-link">Logout</a>
+  <% } else { %>
+    <a href="/signup" class="login-link">Sign In / Up</a>
+  <% } %>
+  <button class="add-contact-btn">+ Add Recipe</button>
+</div>

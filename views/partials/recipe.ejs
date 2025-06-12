@@ -1,6 +1,13 @@
-<% title = 'Home' %>
-
-<%- include('partials/header') %>
+<div class="top-controls">
+  <% if (user) { %>
+    <span>Welcome, <%= user.username %>!</span>
+    <a href="/logout">Logout</a>
+  <% } else { %>
+    <a href="/login" class="login-link">Sign In</a>
+    <a href="/signup" class="login-link">Sign Up</a>
+  <% } %>
+  <button class="add-contact-btn">+ Add Recipe</button>
+</div>
 
 <article>
   <h1>Recipes</h1>
@@ -8,7 +15,7 @@
 
 <div id="contacts"></div>
 
-<!-- Modal -->
+<!-- Contact Form Modal -->
 <div id="contactModal" class="modal hidden">
   <div class="modal-content">
     <span class="close-button">&times;</span>

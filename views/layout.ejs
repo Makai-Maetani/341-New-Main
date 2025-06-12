@@ -6,23 +6,9 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="top-controls">
-  <% if (user) { %>
-    <span>Welcome, <%= user.username %>!</span>
-    <a href="/logout">Logout</a>
-  <% } else { %>
-    <a href="/login">Sign In</a>
-    <a href="/signup" class="login-link">Sign Up</a>
-
-  <% } %>
-  <button class="add-contact-btn">+ Add Recipe</button>
-</div>
-
-
   <main>
-    <%- body %> <!-- Injects the page-specific content -->
+    <%- body %>
   </main>
-
   <script src="/script.js"></script>
 </body>
 </html>
