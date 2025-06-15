@@ -7,6 +7,9 @@ const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
+const passport = require('passport');
+const GitHubStrategy = require('passport-github2').Strategy;
+
 
 dotenv.config();
 
@@ -64,21 +67,48 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // === Mongoose Models ===
 const contactSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
-  email: String,
-  favoriteColor: String,
-  birthday: String
+  dishName: String,        
+  chefName: String,
+  instructions: String,
+  bakingTime: String,
+  ingredients: String,
+  countryOfOrigin: String,
+  calories: Number         
 });
 const Contact = mongoose.model("Contact", contactSchema);
 
 const accountSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
-  password: { type: String, required: true }, // will be hashed
+  password: { type: String, required: true }, // O auth stuff
   email: { type: String, required: true, unique: true },
   birthdate: { type: Date, required: true }
 });
 const Account = mongoose.model('Account', accountSchema);
+
+// === Github Oauth ===
+
+// Add this after your app.use(session(...)) but before your routes
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((obj, done) => {
+  done(null, obj);
+});
+
+passport.use(new GitHubStrategy({
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: process.env.GITHUB_CALLBACK_URL
+  },
+  (accessToken, refreshToken, profile, done) => {
+    // This is where you handle the user data
+    return done(null, profile);
+  }
+));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // === Routes ===
 
@@ -98,7 +128,23 @@ app.get('/login', (req, res) => {
   res.render('login'); // render login.ejs
 });
 
+// GitHub Auth Routes 
+app.get('/auth/github',
+  passport.authenticate('github', { scope: ['user:email'] })
+);
 
+app.get('/auth/github/callback', 
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  (req, res) => {
+    // Successful authentication
+    req.session.user = {
+      id: req.user.id,
+      username: req.user.username,
+      provider: 'github'
+    };
+    res.redirect('/');
+  }
+);
 
 
 app.get('/signup', (req, res) => {
@@ -237,83 +283,83 @@ app.get("/api/contacts", async (req, res) => {
  *       400:
  *         description: Invalid data
  */
+// POST /contacts
 app.post('/contacts', async (req, res) => {
-  const { firstName, lastName, email, favoriteColor, birthday } = req.body;
+  const { dishName, chefName, calories, instructions, bakingTime, ingredients, countryOfOrigin } = req.body;
 
-  if (!firstName || !lastName || !email || !favoriteColor || !birthday) {
+  if (!dishName || !chefName || !calories || !instructions || !bakingTime || !ingredients || !countryOfOrigin) {
     return res.status(400).json({ error: 'All fields are required' });
   }
 
   try {
-    const newContact = new Contact({ firstName, lastName, email, favoriteColor, birthday });
-    const savedContact = await newContact.save();
-    res.status(201).json({ id: savedContact._id });
+    const newRecipe = new Contact({ 
+      dishName,
+      chefName,
+      calories,
+      instructions,
+      bakingTime,
+      ingredients,
+      countryOfOrigin
+    });
+    const savedRecipe = await newRecipe.save();
+    res.status(201).json({ id: savedRecipe._id });
   } catch (err) {
-    res.status(500).json({ error: 'Error creating contact' });
+    res.status(500).json({ error: 'Error creating recipe' });
   }
 });
 
 /**
  * @swagger
- * /contacts/{id}:
- *   put:
- *     description: Update a contact
- *     parameters:
- *       - name: id
- *         in: path
- *         description: ID of the contact to update
- *         required: true
- *         schema:
- *           type: string
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               firstName:
- *                 type: string
- *               lastName:
- *                 type: string
- *               email:
- *                 type: string
- *               favoriteColor:
- *                 type: string
- *               birthday:
- *                 type: string
+ * /api/contacts:
+ *   get:
+ *     description: Get all recipes
  *     responses:
- *       204:
- *         description: Contact updated successfully
- *       400:
- *         description: Invalid data
- *       404:
- *         description: Contact not found
+ *       200:
+ *         description: A list of recipes
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   chefName:
+ *                     type: string
+ *                   instructions:
+ *                     type: string
+ *                   bakingTime:
+ *                     type: string
+ *                   ingredients:
+ *                     type: string
+ *                   countryOfOrigin:
+ *                     type: string
  */
 app.put('/contacts/:id', async (req, res) => {
   const { id } = req.params;
-  const { firstName, lastName, email, favoriteColor, birthday } = req.body;
+  const { dishName, chefName, calories, instructions, bakingTime, ingredients, countryOfOrigin } = req.body;
 
-  if (!firstName || !lastName || !email || !favoriteColor || !birthday) {
+  if (!dishName || !chefName || !calories || !instructions || !bakingTime || !ingredients || !countryOfOrigin) {
     return res.status(400).json({ error: 'All fields are required' });
   }
 
   try {
-    const updatedContact = await Contact.findByIdAndUpdate(
+    const updatedRecipe = await Contact.findByIdAndUpdate(
       id,
-      { firstName, lastName, email, favoriteColor, birthday },
+      { dishName, chefName, calories, instructions, bakingTime, ingredients, countryOfOrigin },
       { new: true }
     );
 
-    if (!updatedContact) {
-      return res.status(404).json({ error: 'Contact not found' });
+    if (!updatedRecipe) {
+      return res.status(404).json({ error: 'Recipe not found' });
     }
 
-    res.status(204).send();
+    res.status(200).json(updatedRecipe);
   } catch (err) {
-    res.status(500).json({ error: 'Error updating contact' });
+    console.error('Update error:', err);
+    res.status(500).json({ error: 'Error updating recipe' });
   }
 });
+
 
 /**
  * @swagger
