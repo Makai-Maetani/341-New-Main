@@ -1,0 +1,25 @@
+.panel {
+  margin: 15px;            /* space around the panel */
+  padding: 15px;           /* inner spacing */
+  border-color: #ccc;      /* light black/gray border */
+}
+
+.panel-heading {
+  padding: 15px;
+}
+
+.panel-body {
+  padding: 15px;
+}
+
+.panel-heading button {
+  margin-right: 10px; /* space between buttons */
+  margin-top: 5px;    /* optional: small top margin for alignment */
+}
+
+
+.panel-heading img {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

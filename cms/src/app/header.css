@@ -1,0 +1,35 @@
+.navbar {
+  margin-bottom: 20px;
+}
+
+
+ /* Darker navbar background */
+  .navbar-custom {
+    background-color: #222; /* dark gray/black */
+    border-color: #111;
+  }
+
+  /* Brand styling */
+  .navbar-custom .navbar-brand {
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .navbar-custom .navbar-brand:hover {
+    color: #00FF80; /* Emerald green hover */
+  }
+
+  /* Nav links styling */
+  .navbar-custom .navbar-nav > li > a {
+    color: #fff;
+    transition: color 0.1s ease;
+  }
+
+  .navbar-custom .navbar-nav > li > a:hover {
+    color: #222; /* Sonic emerald green hover */
+  }
+
+  /* Optional: active link color */
+  .navbar-custom .navbar-nav > li.active > a {
+    color: #00FF80;
+  }

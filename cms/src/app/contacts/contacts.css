@@ -1,0 +1,60 @@
+
+/* Button hover effect */
+.btn-success:hover {
+  background-color: #222; 
+  
+  font-weight: bold; 
+
+}
+
+/* Header section above the contact list */
+.contacts-header {
+  display: flex;
+  align-items: center;
+  gap: 19px;                  /* space between title and button */
+        /* space below header before list starts */
+  margin-left: 31vw;          /* left margin ≈ 1/3 of the screen */
+}
+
+.contacts-header h2 {
+  margin: 0;
+}
+
+.contacts-header button {
+  margin: 0;
+}
+
+
+.contacts-container {
+  margin-top: 30px; /* space from top of page */
+}
+
+/* Add spacing between the two columns */
+.contact-list-col,
+.contact-detail-col {
+  padding: 20px;
+}
+
+/* Optional: subtle background for clarity */
+.contact-list-col cms-contact-list,
+.contact-detail-col cms-contact-detail {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  border: none; /* remove unwanted borders */
+  box-shadow: none; /* remove shadows if any */
+}
+
+/* Style the individual contact items */
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* spacing between contacts */
+}
+
+.contact-item img {
+  margin-right: 10px; /* space between image and name */
+  border-radius: 50%; /* optional, makes the image circular */
+}
+
+

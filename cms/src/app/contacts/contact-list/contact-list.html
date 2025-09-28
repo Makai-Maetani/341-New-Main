@@ -1,0 +1,6 @@
+<div class="contact-list-wrapper">
+  <div *ngFor="let contact of contacts" class="contact-card">
+    <img [src]="contact.imageUrl" alt="{{ contact.name }}" class="contact-img">
+    <span class="contact-name">{{ contact.name }}</span>
+  </div>
+</div>
