@@ -1,24 +1,52 @@
 <div class="contacts-header">
   <h2>Contacts</h2>
-  <button class="btn btn-success">New Contact</button>
+  <button class="btn btn-success" (click)="toggleNewContactForm()">New Contact</button>
+
+  <div *ngIf="showNewContactForm" class="panel panel-default">
+    <div class="panel-body">
+      <form #newContactForm="ngForm" (ngSubmit)="onAddNewContact(newContactForm)">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" class="form-control" name="name" ngModel [ngModel]="editForm?.name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" class="form-control" name="email" ngModel [ngModel]="editForm?.email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone:</label>
+          <input type="text" id="phone" class="form-control" name="phone" ngModel [ngModel]="editForm?.phone">
+        </div>
+        <div class="form-group">
+          <label for="imageUrl">Image URL:</label>
+          <input type="text" id="imageUrl" class="form-control" name="imageUrl" ngModel [ngModel]="editForm?.imageUrl">
+        </div>
+        <button type="submit" class="btn btn-success">
+          {{ isEditing ? 'Save Changes' : 'Add Contact' }}
+        </button>
+        <button type="button" class="btn btn-danger" (click)="toggleNewContactForm()">Cancel</button>
+      </form>
+    </div>
+  </div>
 </div>
 
 <div class="container contacts-container">
   <div class="row">
     <!-- Contact List (Left) -->
     <div class="col-sm-6 contact-list-col">
-      <cms-contact-list>
-        <div *ngFor="let contact of contacts" class="contact-item">
-          <img [src]="contact.imageUrl" alt="{{ contact.name }}" width="50">
-          <span>{{ contact.name }}</span>
-        </div>
+      <cms-contact-list 
+        [contacts]="contacts" 
+        (selectedContact)="selectedContact = $event">
       </cms-contact-list>
     </div>
 
     <!-- Contact Detail (Right) -->
     <div class="col-sm-6 contact-detail-col">
-      <cms-contact-detail [contact]="contacts[0]"></cms-contact-detail>
+      <cms-contact-detail
+        [contact]="selectedContact"
+        (editContact)="onEditContact($event)"
+        (deleteContact)="onDeleteContact($event)">
+      </cms-contact-detail>
     </div>
   </div>
 </div>
-

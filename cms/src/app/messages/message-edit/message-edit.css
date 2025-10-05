@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  margin-top: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+button {
+  padding: 6px 12px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+}
+
+button:first-of-type {
+  background-color: #28a745; /* Green Send button */
+}
+
+button:last-of-type {
+  background-color: #dc3545; /* Red Clear button */
+}

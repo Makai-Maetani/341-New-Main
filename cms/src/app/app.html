@@ -1,2 +1,9 @@
-<cms-header></cms-header>
-<cms-contacts></cms-contacts>
+<!-- Header with feature links -->
+<cms-header (selectedFeatureEvent)="switchView($event)"></cms-header>
+
+<!-- Conditionally show each component based on selectedFeature -->
+<div class="container">
+  <cms-documents *ngIf="selectedFeature === 'documents'"></cms-documents>
+  <cms-message-list *ngIf="selectedFeature === 'messages'"></cms-message-list>
+  <cms-contacts *ngIf="selectedFeature === 'contacts'"></cms-contacts>
+</div>

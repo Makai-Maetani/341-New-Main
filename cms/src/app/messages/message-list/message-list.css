@@ -1,0 +1,19 @@
+.container {
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+cms-message-item {
+  display: block;
+  margin-bottom: 10px;
+}
+
+cms-message-edit {
+  display: block;
+  margin-top: 20px;
+}
