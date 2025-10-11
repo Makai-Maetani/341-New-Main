@@ -1,9 +1,16 @@
 import { Component } from '@angular/core';
+import { Document } from './documents.model';
 
 @Component({
-  selector: 'cms-documents',  // <- must match <cms-documents> in app.html
+  selector: 'cms-documents',
+  standalone: false,
   templateUrl: './documents.html',
-  styleUrls: ['./documents.css'],
-  standalone: false
+  styleUrls: ['./documents.css']
 })
-export class Documents { }
+export class Documents {
+  selectedDocument!: Document;
+
+  onSelectedDocument(document: Document) {
+    this.selectedDocument = document;
+  }
+}

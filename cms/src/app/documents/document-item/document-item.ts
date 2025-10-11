@@ -3,7 +3,8 @@ import { Document } from '../documents.model';
 
 
 @Component({
-  selector: 'app-document-item',  // this is the HTML tag you'll use
+  selector: 'cms-document-item',
+  // this is the HTML tag you'll use
   templateUrl: './document-item.html',
   standalone: false, 
   styleUrls: ['./document-item.css']

@@ -1,12 +1,8 @@
-<p>documents works!</p>
 <div class="row">
   <div class="col-md-5">
-    <!-- Add tag to load the DocumentListComponent here -->
-    <app-document-list></app-document-list>
+    <cms-document-list (selectedDocumentEvent)="onSelectedDocument($event)"></cms-document-list>
   </div>
-
-  <div class="col-md-4">
-    <!-- Add tag to load the DocumentDetailComponent here -->
-    <app-document-detail></app-document-detail>
+  <div class="col-md-7">
+    <cms-document-detail *ngIf="selectedDocument" [document]="selectedDocument"></cms-document-detail>
   </div>
 </div>

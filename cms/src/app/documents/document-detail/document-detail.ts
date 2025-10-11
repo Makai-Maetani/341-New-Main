@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Document } from '../documents.model';
 
 @Component({
-  selector: 'app-document-detail',
+  selector: 'cms-document-detail',
+  standalone: false,
   templateUrl: './document-detail.html',
-  standalone: false, 
   styleUrls: ['./document-detail.css']
 })
 export class DocumentDetailComponent {
+  @Input() document!: Document;
 }
