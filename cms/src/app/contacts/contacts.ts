@@ -1,25 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Contact } from './contact.model';
+import { ContactService } from './contact.service';
 
 @Component({
   selector: 'cms-contacts',
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.css'],
-  standalone: false // explicitly non-standalone
+  standalone: false
 })
-export class Contacts {
+export class Contacts implements OnInit {
   selectedContact!: Contact;
   showNewContactForm = false;
-  isEditing = false;            // Track if we are editing
-  editingContactId: string | null = null; // Store which contact is being edited
-
-  // Form pre-fill object
+  isEditing = false;
+  editingContactId: string | null = null;
   editForm: { name: string; email: string; phone: string; imageUrl: string } | null = null;
 
-  contacts: Contact[] = [
-    new Contact('1', 'R. Kent Jackson', 'jacksonk@byui.edu', '208-496-3771', 'assets/jacksonk.jpg', null),
-    new Contact('2', 'Rex Barzee', 'barzeer@byui.edu', '208-496-3768', 'assets/barzeer.jpg', null)
-  ];
+  contacts: Contact[] = [];
+
+  constructor(private contactService: ContactService) {}
+
+  ngOnInit() {
+    // Load initial contacts from the service
+    this.contacts = this.contactService.getContacts();
+    console.log('Loaded contacts:', this.contacts);
+  }
 
   toggleNewContactForm() {
     this.showNewContactForm = !this.showNewContactForm;
@@ -35,17 +39,19 @@ export class Contacts {
 
     if (this.isEditing && this.editingContactId) {
       // Update existing contact
+      const updatedContact = new Contact(
+        this.editingContactId,
+        form.value.name,
+        form.value.email,
+        form.value.phone,
+        form.value.imageUrl,
+        null
+      );
+
+      this.contactService.updateContact(this.editingContactId, updatedContact);
       const index = this.contacts.findIndex(c => c.id === this.editingContactId);
-      if (index > -1) {
-        this.contacts[index] = new Contact(
-          this.editingContactId,
-          form.value.name,
-          form.value.email,
-          form.value.phone,
-          form.value.imageUrl,
-          null
-        );
-      }
+      if (index > -1) this.contacts[index] = updatedContact;
+
       this.isEditing = false;
       this.editingContactId = null;
     } else {
@@ -58,6 +64,8 @@ export class Contacts {
         form.value.imageUrl,
         null
       );
+
+      this.contactService.addContact(newContact);
       this.contacts.push(newContact);
     }
 
@@ -81,9 +89,7 @@ export class Contacts {
   }
 
   onDeleteContact(contact: Contact) {
-    const index = this.contacts.indexOf(contact);
-    if (index > -1) {
-      this.contacts.splice(index, 1);
-    }
+    this.contactService.deleteContact(contact.id);
+    this.contacts = this.contacts.filter(c => c.id !== contact.id);
   }
 }

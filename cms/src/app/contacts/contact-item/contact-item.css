@@ -1,0 +1,18 @@
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* space between items */
+}
+
+.contact-item img {
+  width: auto;
+  height: 60px; /* keep a consistent height */
+  margin-right: 15px; /* ← space between image and text */
+  border-radius: 0; /* keep original shape */
+}
+
+.contact-item span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+}

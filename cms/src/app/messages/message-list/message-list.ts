@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Message } from '../messages.model';
+import { MOCKMESSAGES } from '../MOCKMESSAGES';
 
 @Component({
   selector: 'cms-message-list',
@@ -8,12 +9,10 @@ import { Message } from '../messages.model';
   styleUrls: ['./message-list.css']
 })
 export class MessageListComponent {
-  messages: Message[] = [
-    new Message(1, 'Test', 'Hello', 'This is a test messsage!'),
-    new Message(2, 'Reimu', 'Project', 'This is a lot of stuff to do in the first 2 weeks'),
-    new Message(3, 'Marisa', 'Update', 'I hope Im able to keep up with everything')
-  ];
+  // Initialize messages with the mock data
+  messages: Message[] = [...MOCKMESSAGES];
 
+  // Add a new message to the list
   onAddMessage(message: Message) {
     this.messages.push(message);
   }
