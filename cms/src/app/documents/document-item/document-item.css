@@ -5,5 +5,14 @@
   font-size: 1.3rem;
   border: solid thin darkgrey;
   float: left;
-  padding: .25rem
+  padding: .25rem;
+  box-sizing: border-box; 
+  overflow: hidden; 
+}
+
+.document-title {
+  margin: 0;
+  line-height: 1.2;
+  word-break: break-word; 
+  overflow-wrap: anywhere;
 }

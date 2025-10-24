@@ -23,6 +23,10 @@ export class Contacts implements OnInit {
     // Load initial contacts from the service
     this.contacts = this.contactService.getContacts();
     console.log('Loaded contacts:', this.contacts);
+    // Subscribe to selection events emitted by the ContactService
+    this.contactService.contactSelectedEvent.subscribe((contact: Contact) => {
+      this.selectedContact = contact;
+    });
   }
 
   toggleNewContactForm() {

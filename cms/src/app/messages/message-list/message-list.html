@@ -5,6 +5,6 @@
   <!-- Loop through messages and show each message -->
   <cms-message-item *ngFor="let message of messages" [message]="message"></cms-message-item>
 
-  <!-- Form to add a new message -->
-  <cms-message-edit (addMessageEvent)="onAddMessage($event)"></cms-message-edit>
+  <!-- Form to add a new message (MessageEdit now saves directly via MessageService) -->
+  <cms-message-edit></cms-message-edit>
 </div>
