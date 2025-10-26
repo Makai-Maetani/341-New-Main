@@ -16,3 +16,22 @@
   word-break: break-word; 
   overflow-wrap: anywhere;
 }
+
+/* Improve clickable affordance and active state */
+.documentDiv {
+  cursor: pointer;
+  transition: background-color .12s ease;
+}
+
+.documentDiv:hover {
+  background: #f7f7f7;
+}
+
+.documentDiv.active {
+  background: #e8f0ff;
+  border-color: #80a8ff;
+}
+
+.documentDiv .caret {
+  margin-top: 6px;
+}

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'cms-header',
@@ -7,9 +7,5 @@ import { Component, EventEmitter, Output } from '@angular/core';
   standalone: false
 })
 export class HeaderComponent {
-  @Output() selectedFeatureEvent = new EventEmitter<string>();
-
-  onSelected(feature: string) {
-    this.selectedFeatureEvent.emit(feature);
-  }
+  // Navigation is now handled by the Router via routerLink in the template.
 }

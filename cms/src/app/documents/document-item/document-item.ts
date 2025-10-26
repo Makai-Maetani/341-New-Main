@@ -11,4 +11,5 @@ import { Document } from '../documents.model';
 })
 export class DocumentItemComponent {   // must have Component in the class name
   @Input() document!: Document;
+  @Input() isSelected: boolean = false;
 }

@@ -1,3 +1,4 @@
-<a class="list-group-item clearfix documentDiv">
+<a class="list-group-item clearfix documentDiv" [class.active]="isSelected" role="button">
   <h4 class="document-title">{{ document.name }}</h4>
+  <span class="caret pull-right" *ngIf="isSelected"></span>
 </a>

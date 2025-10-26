@@ -11,11 +11,11 @@
         <a class="navbar-brand" href="#">WeLearn CMS</a>
       </div>
 
-      <!-- Nav links -->
+      <!-- Nav links (router-driven) -->
       <ul class="nav navbar-nav">
-        <li><a href="#" (click)="onSelected('documents')">Documents</a></li>
-        <li><a href="#" (click)="onSelected('messages')">Messages</a></li>
-        <li><a href="#" (click)="onSelected('contacts')">Contacts</a></li>
+        <li><a [routerLink]="['/documents']" routerLinkActive="active">Documents</a></li>
+        <li><a [routerLink]="['/messages']" routerLinkActive="active">Messages</a></li>
+        <li><a [routerLink]="['/contacts']" routerLinkActive="active">Contacts</a></li>
       </ul>
 
       <!-- User dropdown -->

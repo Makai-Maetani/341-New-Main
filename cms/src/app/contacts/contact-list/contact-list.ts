@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Contact } from '../contact.model';
 import { ContactService } from '../contact.service';
 
@@ -6,19 +6,18 @@ import { ContactService } from '../contact.service';
   selector: 'cms-contact-list',
   templateUrl: './contact-list.html',
   styleUrls: ['./contact-list.css'],
-  standalone: false // explicitly non-standalone
+  standalone: false
 })
 export class ContactListComponent implements OnInit {
-  contacts: Contact[] = [];
+  @Input() contacts: Contact[] = []; // 🔹 Add this line!
 
   constructor(private contactService: ContactService) {}
 
   ngOnInit() {
-    this.contacts = this.contactService.getContacts();
+    //I might need ts one day
   }
 
   onSelected(contact: Contact) {
-    // Emit selection via the service for cross-component communication
     this.contactService.contactSelectedEvent.emit(contact);
   }
 }

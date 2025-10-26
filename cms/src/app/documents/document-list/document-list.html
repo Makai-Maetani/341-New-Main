@@ -1,8 +1,8 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="row pad-left-right">
-      <span class="pull-left title">Documents</span>
-      <a class="btn btn-success pull-right">Add Document</a>
+  <span class="pull-left title">Documents</span>
+  <a class="btn btn-success pull-right" (click)="onNewDocument()">Add Document</a>
     </div>
   </div>
 
@@ -11,8 +11,14 @@
       <cms-document-item
         *ngFor="let document of documents"
         [document]="document"
+        [isSelected]="document.id === selectedDocumentId"
         (click)="onSelectedDocument(document)">
       </cms-document-item>
     </div>
   </div>
 </div>
+
+<div *ngIf="showAddMessage" class="text-success" style="margin-top: 10px;">
+  add document works!
+</div>
+

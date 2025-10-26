@@ -1,9 +1,7 @@
-<!-- Header with feature links -->
-<cms-header (selectedFeatureEvent)="switchView($event)"></cms-header>
+<!-- Header (navigation will use the Router) -->
+<cms-header></cms-header>
 
-<!-- Conditionally show each component based on selectedFeature -->
+<!-- Router outlet: the router will render the active view here -->
 <div class="container">
-  <cms-documents *ngIf="selectedFeature === 'documents'"></cms-documents>
-  <cms-message-list *ngIf="selectedFeature === 'messages'"></cms-message-list>
-  <cms-contacts *ngIf="selectedFeature === 'contacts'"></cms-contacts>
+  <router-outlet></router-outlet>
 </div>

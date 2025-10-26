@@ -10,14 +10,28 @@ import { DocumentService } from '../documents.service';
 })
 export class DocumentListComponent implements OnInit {
   documents: Document[] = [];
+  selectedDocumentId: string | null = null;
+  showAddMessage: boolean = false;
 
   constructor(private documentService: DocumentService) {}
 
   ngOnInit() {
     this.documents = this.documentService.getDocuments();
+    this.documentService.documentChangedEvent.subscribe((docs: Document[]) => {
+      this.documents = docs;
+    });
   }
 
   onSelectedDocument(document: Document) {
     this.documentService.documentSelectedEvent.emit(document);
+    this.selectedDocumentId = document.id;
   }
+
+  onNewDocument() {
+  this.showAddMessage = true; 
+
+     
+      
+    }
+
 }

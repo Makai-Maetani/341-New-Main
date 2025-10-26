@@ -92,8 +92,11 @@ export class Contacts implements OnInit {
     };
   }
 
-  onDeleteContact(contact: Contact) {
-    this.contactService.deleteContact(contact.id);
-    this.contacts = this.contacts.filter(c => c.id !== contact.id);
-  }
+ onDeleteContact(contact: Contact) {
+  console.log('🗑️ Delete event received for:', contact.name);
+  this.contactService.deleteContact(contact.id);
+  this.contacts = this.contactService.getContacts();
+  this.selectedContact = null!;
+}
+
 }
