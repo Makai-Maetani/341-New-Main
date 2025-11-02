@@ -16,7 +16,7 @@ export class DocumentDetailComponent {
 
   onDelete() {
     if (!this.document) return;
-    this.documentService.deleteDocument(this.document.id);
+    this.documentService.deleteDocument(this.document);
   }
 
   onEdit() {

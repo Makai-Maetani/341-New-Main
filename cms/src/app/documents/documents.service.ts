@@ -1,4 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Document } from './documents.model';
 import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
 
@@ -7,11 +8,16 @@ import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
 })
 export class DocumentService {
   documentSelectedEvent = new EventEmitter<Document>();
-  documentChangedEvent = new EventEmitter<Document[]>();
+  // Subject that emits when the documents list changes
+  documentListChangedEvent = new Subject<Document[]>();
   private documents: Document[] = [];
+  maxDocumentId: number = 0;
 
   constructor() {
     this.documents = MOCKDOCUMENTS;
+    this.maxDocumentId = this.getMaxId();
+    // Emit initial list so subscribers get the starting data
+    this.documentListChangedEvent.next(this.getDocuments());
   }
 
   getDocuments(): Document[] {
@@ -21,28 +27,51 @@ export class DocumentService {
   getDocument(id: string): Document | null {
     return this.documents.find(d => d.id === id) || null;
   }
-
-  addDocument(doc: Document): void {
-    if (!doc.id) {
-      doc.id = Date.now().toString();
+  // Find the maximum numeric id currently used by any document
+  getMaxId(): number {
+    let maxId = 0;
+    for (const doc of this.documents) {
+      const currentId = parseInt(doc.id as any, 10);
+      if (!isNaN(currentId) && currentId > maxId) {
+        maxId = currentId;
+      }
     }
-    this.documents.push(doc);
-    this.documentChangedEvent.emit(this.getDocuments());
+    return maxId;
   }
 
-  updateDocument(updated: Document): void {
-    const index = this.documents.findIndex(d => d.id === updated.id);
-    if (index > -1) {
-      this.documents[index] = updated;
-      this.documentChangedEvent.emit(this.getDocuments());
-    }
+  // Add a new document. Assign a unique id and emit the updated list.
+  addDocument(newDocument: Document) {
+    if (!newDocument) return;
+
+    this.maxDocumentId++;
+    newDocument.id = this.maxDocumentId.toString();
+    this.documents.push(newDocument);
+    const documentsListClone = this.getDocuments();
+    this.documentListChangedEvent.next(documentsListClone);
   }
 
-  deleteDocument(id: string): void {
-    const index = this.documents.findIndex(d => d.id === id);
-    if (index > -1) {
-      this.documents.splice(index, 1);
-      this.documentChangedEvent.emit(this.getDocuments());
-    }
+  // Update an existing document: locate original and replace with newDocument
+  updateDocument(originalDocument: Document, newDocument: Document) {
+    if (!originalDocument || !newDocument) return;
+
+    const pos = this.documents.indexOf(originalDocument);
+    if (pos < 0) return;
+
+    newDocument.id = originalDocument.id;
+    this.documents[pos] = newDocument;
+    const documentsListClone = this.getDocuments();
+    this.documentListChangedEvent.next(documentsListClone);
+  }
+
+  // Delete a document (accepts a Document object)
+  deleteDocument(document: Document) {
+    if (!document) return;
+
+    const pos = this.documents.indexOf(document);
+    if (pos < 0) return;
+
+    this.documents.splice(pos, 1);
+    const documentsListClone = this.getDocuments();
+    this.documentListChangedEvent.next(documentsListClone);
   }
 }
