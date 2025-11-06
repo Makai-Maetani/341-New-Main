@@ -41,5 +41,8 @@ export class DocumentListComponent implements OnInit, OnDestroy {
      
       
     }
+  onCloseEdit() {
+    this.showAddMessage = false;
+  }
 
 }

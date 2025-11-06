@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<div *ngIf="showAddMessage" class="text-success" style="margin-top: 10px;">
-  add document works!
-</div>
+  <div *ngIf="showAddMessage" style="margin-top: 10px;">
+    <cms-document-edit (close)="showAddMessage = false"></cms-document-edit>
+  </div>
 

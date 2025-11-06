@@ -1,9 +1,9 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="row pad-all">
-      <h4 class="title margin-left-right">{{ document?.name }}</h4>
+  <h4 class="title margin-left-right">{{ document.name }}</h4>
       <div class="row pull-right margin-left-right">
-        <a class="btn btn-primary" [href]="document?.url" target="_blank">View</a>
+  <a class="btn btn-primary" [href]="document.url" target="_blank">View</a>
         <a class="btn btn-info" (click)="onEdit()">Edit</a>
         <a class="btn btn-danger" (click)="onDelete()">Delete</a>
       </div>
@@ -13,18 +13,18 @@
   <div class="panel-body">
     <div class="pad-left-right">
       <div class="row">
-        <label>Description:</label>
-        <span class="label-value">{{ document?.description }}</span>
+  <label>Description:</label>
+  <span class="label-value">{{ document.description }}</span>
       </div>
       <br>
       <div class="row">
-        <label>URL:</label>
-        <span class="label-value">{{ document?.url }}</span>
+  <label>URL:</label>
+  <span class="label-value">{{ document.url }}</span>
       </div>
     </div>
   </div>
 </div>
 
-<div *ngIf="showEditMessage" class="edit-message text-success" style="margin-top: 10px;">
-  document-edit works!
+<div *ngIf="showEditMessage" style="margin-top: 10px;">
+  <cms-document-edit [documentInput]="document" (close)="showEditMessage = false"></cms-document-edit>
 </div>

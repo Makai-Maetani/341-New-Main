@@ -18,12 +18,14 @@ import { Contacts } from './contacts/contacts';
 import { ContactListComponent } from './contacts/contact-list/contact-list';
 import { ContactItemComponent } from './contacts/contact-item/contact-item';
 import { ContactDetailComponent } from './contacts/contact-detail/contact-detail';
+import { ContactEditComponent } from './contacts/contact-edit/contact-edit';
 
 // Documents
 import { Documents } from './documents/documents';
 import { DocumentListComponent } from './documents/document-list/document-list';
 import { DocumentItemComponent } from './documents/document-item/document-item';
 import { DocumentDetailComponent } from './documents/document-detail/document-detail';
+import { DocumentEditComponent } from './documents/document-edit/document-edit';
 
 // Messages
 import { Messages } from './messages/messages';
@@ -40,12 +42,14 @@ import { MessageListComponent } from './messages/message-list/message-list';
     Contacts,
     ContactListComponent,
     ContactItemComponent,
-    ContactDetailComponent,
+  ContactDetailComponent,
+  ContactEditComponent,
     // Documents
     Documents,
     DocumentListComponent,
     DocumentItemComponent,
     DocumentDetailComponent,
+  DocumentEditComponent,
     // Messages
     Messages,
     MessageEditComponent,

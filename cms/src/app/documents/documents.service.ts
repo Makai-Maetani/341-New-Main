@@ -45,6 +45,10 @@ export class DocumentService {
 
     this.maxDocumentId++;
     newDocument.id = this.maxDocumentId.toString();
+    // Ensure URL is absolute (add http:// if missing) so anchor opens external sites
+    if (newDocument.url && !/^https?:\/\//i.test(newDocument.url)) {
+      newDocument.url = 'http://' + newDocument.url;
+    }
     this.documents.push(newDocument);
     const documentsListClone = this.getDocuments();
     this.documentListChangedEvent.next(documentsListClone);
@@ -58,6 +62,9 @@ export class DocumentService {
     if (pos < 0) return;
 
     newDocument.id = originalDocument.id;
+    if (newDocument.url && !/^https?:\/\//i.test(newDocument.url)) {
+      newDocument.url = 'http://' + newDocument.url;
+    }
     this.documents[pos] = newDocument;
     const documentsListClone = this.getDocuments();
     this.documentListChangedEvent.next(documentsListClone);

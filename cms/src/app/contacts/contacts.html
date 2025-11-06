@@ -2,66 +2,12 @@
   <h2>Contacts</h2>
   <button class="btn btn-success" (click)="toggleNewContactForm()">New Contact</button>
 
-  <!-- New/Edit Contact Form -->
-  <div *ngIf="showNewContactForm" class="panel panel-default">
-    <div class="panel-body">
-      <form #newContactForm="ngForm" (ngSubmit)="onAddNewContact(newContactForm)">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            class="form-control"
-            name="name"
-            ngModel
-            [ngModel]="editForm?.name"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            class="form-control"
-            name="email"
-            ngModel
-            [ngModel]="editForm?.email"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Phone:</label>
-          <input
-            type="text"
-            id="phone"
-            class="form-control"
-            name="phone"
-            ngModel
-            [ngModel]="editForm?.phone"
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="imageUrl">Image URL:</label>
-          <input
-            type="text"
-            id="imageUrl"
-            class="form-control"
-            name="imageUrl"
-            ngModel
-            [ngModel]="editForm?.imageUrl"
-          >
-        </div>
-
-        <button type="submit" class="btn btn-success">
-          {{ isEditing ? 'Save Changes' : 'Add Contact' }}
-        </button>
-        <button type="button" class="btn btn-danger" (click)="toggleNewContactForm()">Cancel</button>
-      </form>
-    </div>
+  <!-- New/Edit Contact Form (embedded component) -->
+  <div *ngIf="showNewContactForm">
+    <cms-contact-edit
+      [contact]="isEditing ? selectedContact : null"
+      (close)="toggleNewContactForm()">
+    </cms-contact-edit>
   </div>
 </div>
 
