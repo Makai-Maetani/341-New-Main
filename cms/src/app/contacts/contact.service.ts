@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Contact } from './contact.model';
-import { MOCKCONTACTS } from './MOCKCONTACTS';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +13,32 @@ export class ContactService {
   contactListChangedEvent = new Subject<Contact[]>();
   private contacts: Contact[] = [];
   maxContactId: number = 0;
+  // Replace with your Realtime DB URL (contacts endpoint)
+  private firebaseUrl = 'https://w09database-default-rtdb.firebaseio.com/contacts.json';
 
-  constructor() {
-    // Load initial mock contacts
-    this.contacts = MOCKCONTACTS;
-    this.maxContactId = this.getMaxId();
-    // emit initial list
-    this.contactListChangedEvent.next(this.getContacts());
+  constructor(private http: HttpClient) {
+    // initialize empty and fetch from server
+    this.contacts = [];
+    this.maxContactId = 0;
+    this.getContacts();
   }
 
   // Get all contacts
   getContacts(): Contact[] {
-    return this.contacts.slice(); // Return a copy
+    // Issue an HTTP GET to fetch contacts from Firebase
+    this.http.get<Contact[]>(this.firebaseUrl)
+      .subscribe(
+        (contacts: Contact[] ) => {
+          this.contacts = contacts || [];
+          this.maxContactId = this.getMaxId();
+          this.contacts.sort((a,b) => (a.name || '').localeCompare(b.name || ''));
+          this.contactListChangedEvent.next(this.contacts.slice());
+        },
+        (error: any) => {
+          console.error('Error fetching contacts from server:', error);
+        }
+      );
+    return this.contacts.slice(); // synchronous copy (may be empty until server responds)
   }
 
   // 🔹 Get a single contact by ID
@@ -40,7 +54,7 @@ export class ContactService {
     this.maxContactId++;
     contact.id = this.maxContactId.toString();
     this.contacts.push(contact);
-    this.contactListChangedEvent.next(this.getContacts());
+    this.storeContacts();
   }
 
   // Update an existing contact
@@ -53,7 +67,7 @@ export class ContactService {
       const index = this.contacts.findIndex(c => c.id === originalOrId);
       if (index > -1) {
         this.contacts[index] = newContact;
-        this.contactListChangedEvent.next(this.getContacts());
+        this.storeContacts();
       }
       return;
     }
@@ -65,7 +79,7 @@ export class ContactService {
     if (pos < 0) return;
     newContact.id = originalContact.id;
     this.contacts[pos] = newContact;
-    this.contactListChangedEvent.next(this.getContacts());
+    this.storeContacts();
   }
 
   // Delete a contact
@@ -75,7 +89,7 @@ export class ContactService {
 
     if (typeof idOrContact === 'string') {
       this.contacts = this.contacts.filter(c => c.id !== idOrContact);
-      this.contactListChangedEvent.next(this.getContacts());
+      this.storeContacts();
       return;
     }
 
@@ -83,7 +97,7 @@ export class ContactService {
     const pos = this.contacts.indexOf(idOrContact as Contact);
     if (pos < 0) return;
     this.contacts.splice(pos, 1);
-    this.contactListChangedEvent.next(this.getContacts());
+    this.storeContacts();
   }
 
   // Returns the maximum numeric id used among contacts
@@ -94,5 +108,16 @@ export class ContactService {
       if (!isNaN(currentId) && currentId > maxId) maxId = currentId;
     }
     return maxId;
+  }
+
+  storeContacts(): void {
+    const body = JSON.stringify(this.contacts);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    this.http.put(this.firebaseUrl, body, { headers })
+      .subscribe(() => {
+        this.contactListChangedEvent.next(this.contacts.slice());
+      }, (error) => {
+        console.error('Error storing contacts to server:', error);
+      });
   }
 }

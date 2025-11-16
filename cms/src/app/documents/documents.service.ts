@@ -2,6 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Document } from './documents.model';
 import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +13,27 @@ export class DocumentService {
   documentListChangedEvent = new Subject<Document[]>();
   private documents: Document[] = [];
   maxDocumentId: number = 0;
+  private firebaseUrl = 'https://w09database-default-rtdb.firebaseio.com/documents.json';
 
-  constructor() {
-    this.documents = MOCKDOCUMENTS;
-    this.maxDocumentId = this.getMaxId();
-    // Emit initial list so subscribers get the starting data
-    this.documentListChangedEvent.next(this.getDocuments());
+  constructor(private http: HttpClient) {
+    this.documents = [];
+    this.maxDocumentId = 0;
+    this.getDocuments();
   }
 
   getDocuments(): Document[] {
+    this.http.get<Document[]>(this.firebaseUrl)
+      .subscribe(
+        (documents: Document[]) => {
+          this.documents = documents || [];
+          this.maxDocumentId = this.getMaxId();
+          this.documents.sort((a,b) => (a.name || '').localeCompare(b.name || ''));
+          this.documentListChangedEvent.next(this.documents.slice());
+        },
+        (error: any) => {
+          console.error('Error fetching documents from server:', error);
+        }
+      );
     return this.documents.slice();
   }
 
@@ -50,8 +63,7 @@ export class DocumentService {
       newDocument.url = 'http://' + newDocument.url;
     }
     this.documents.push(newDocument);
-    const documentsListClone = this.getDocuments();
-    this.documentListChangedEvent.next(documentsListClone);
+    this.storeDocuments();
   }
 
   // Update an existing document: locate original and replace with newDocument
@@ -66,8 +78,7 @@ export class DocumentService {
       newDocument.url = 'http://' + newDocument.url;
     }
     this.documents[pos] = newDocument;
-    const documentsListClone = this.getDocuments();
-    this.documentListChangedEvent.next(documentsListClone);
+    this.storeDocuments();
   }
 
   // Delete a document (accepts a Document object)
@@ -78,7 +89,17 @@ export class DocumentService {
     if (pos < 0) return;
 
     this.documents.splice(pos, 1);
-    const documentsListClone = this.getDocuments();
-    this.documentListChangedEvent.next(documentsListClone);
+    this.storeDocuments();
+  }
+
+  storeDocuments(): void {
+    const body = JSON.stringify(this.documents);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    this.http.put(this.firebaseUrl, body, { headers })
+      .subscribe(() => {
+        this.documentListChangedEvent.next(this.documents.slice());
+      }, (error) => {
+        console.error('Error storing documents to server:', error);
+      });
   }
 }

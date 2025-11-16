@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 // Root component
 import { AppComponent } from './app';
@@ -19,6 +20,7 @@ import { ContactListComponent } from './contacts/contact-list/contact-list';
 import { ContactItemComponent } from './contacts/contact-item/contact-item';
 import { ContactDetailComponent } from './contacts/contact-detail/contact-detail';
 import { ContactEditComponent } from './contacts/contact-edit/contact-edit';
+import { ContactsFilterPipe } from './contacts/contacts-filter.pipe';
 
 // Documents
 import { Documents } from './documents/documents';
@@ -59,7 +61,9 @@ import { MessageListComponent } from './messages/message-list/message-list';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ContactsFilterPipe
   ],
   bootstrap: [AppComponent]
 })
