@@ -65,7 +65,7 @@ app.use('/contacts', contacts);
 
 // Establish a connection to the MongoDB database
 // Use the SRV connection string from Atlas Drivers section (not the direct connection URL)
-const mongoUrl = 'mongodb+srv://asdf1234:asdf1234@cse430.w3eqlhe.mongodb.net/cms?retryWrites=true&w=majority&appName=CSE430';
+const mongoUrl = EnterUrOwn
 
 // Connect without unsupported legacy options (Mongoose handles modern defaults internally)
 // If the host string is a non-SRV Atlas host (mongodb://...) it may require specifying all hosts
