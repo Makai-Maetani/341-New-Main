@@ -5,6 +5,7 @@ var http = require('http');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 
 // import the routing file to handle the default (index) route
 var index = require('./server/routes/app');
@@ -15,6 +16,15 @@ var messages = require('./server/routes/messages');
 var contacts = require('./server/routes/contacts');
 
 var app = express(); // create an instance of express
+
+// Simple request logger for debugging (method, url, body)
+app.use((req, res, next) => {
+  console.log(`[REQUEST] ${req.method} ${req.url}`);
+  if (req.method === 'POST' || req.method === 'PUT' || req.method === 'PATCH') {
+    console.log('[REQUEST BODY]', JSON.stringify(req.body));
+  }
+  next();
+});
 
 // Tell express to use the following parsers for POST data
 app.use(bodyParser.json());
@@ -49,9 +59,37 @@ app.use(express.static(staticDir));
 app.use('/', index);
 
 // Map URL routes to resource routing files
-app.use('/api/documents', documents);
-app.use('/api/messages', messages);
-app.use('/api/contacts', contacts);
+app.use('/documents', documents);
+app.use('/messages', messages);
+app.use('/contacts', contacts);
+
+// Establish a connection to the MongoDB database
+// Use the SRV connection string from Atlas Drivers section (not the direct connection URL)
+const mongoUrl = 'mongodb+srv://asdf1234:asdf1234@cse430.w3eqlhe.mongodb.net/cms?retryWrites=true&w=majority&appName=CSE430';
+
+// Connect without unsupported legacy options (Mongoose handles modern defaults internally)
+// If the host string is a non-SRV Atlas host (mongodb://...) it may require specifying all hosts
+// Use the SRV form (mongodb+srv://...) provided by Atlas when possible.
+const connectToMongo = async () => {
+  try {
+    await mongoose.connect(mongoUrl);
+    console.log('Connected to MongoDB Atlas!');
+  } catch (err) {
+    console.log('Connection failed: ' + err);
+    if (err && err.message && err.message.includes('No addresses found at host')) {
+      console.log('Hint: the provided connection string may require the SRV scheme.');
+      console.log('Try using a connection string that starts with "mongodb+srv://<user>:<pw>@..." from Atlas Connect dialog.');
+    }
+  }
+};
+
+connectToMongo();
+
+// Mongoose connection events for better diagnostics
+mongoose.connection.on('connected', () => console.log('Mongoose event: connected'));
+mongoose.connection.on('error', (err) => console.log('Mongoose event: error', err));
+mongoose.connection.on('disconnected', () => console.log('Mongoose event: disconnected'));
+mongoose.connection.on('reconnected', () => console.log('Mongoose event: reconnected'));
 
 // Tell express to map all other non-defined routes back to the index page
 // Use a RegExp route to avoid path parsing issues with some path-to-regexp versions

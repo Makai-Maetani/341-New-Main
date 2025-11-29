@@ -13,7 +13,7 @@ export class DocumentService {
   documentListChangedEvent = new Subject<Document[]>();
   private documents: Document[] = [];
   maxDocumentId: number = 0;
-  private firebaseUrl = 'https://w09database-default-rtdb.firebaseio.com/documents.json';
+  private nodeServerUrl = 'http://localhost:3000/documents';
 
   constructor(private http: HttpClient) {
     this.documents = [];
@@ -22,12 +22,10 @@ export class DocumentService {
   }
 
   getDocuments(): Document[] {
-    this.http.get<Document[]>(this.firebaseUrl)
+    this.http.get<{ message: string, documents: Document[] }>(this.nodeServerUrl)
       .subscribe(
-        (documents: Document[]) => {
-          this.documents = documents || [];
-          this.maxDocumentId = this.getMaxId();
-          this.documents.sort((a,b) => (a.name || '').localeCompare(b.name || ''));
+        (response) => {
+          this.documents = response.documents || [];
           this.documentListChangedEvent.next(this.documents.slice());
         },
         (error: any) => {
@@ -52,54 +50,92 @@ export class DocumentService {
     return maxId;
   }
 
-  // Add a new document. Assign a unique id and emit the updated list.
   addDocument(newDocument: Document) {
-    if (!newDocument) return;
+    if (!newDocument) {
+      return;
+    }
 
-    this.maxDocumentId++;
-    newDocument.id = this.maxDocumentId.toString();
-    // Ensure URL is absolute (add http:// if missing) so anchor opens external sites
+    // make sure id of the new Document is empty
+    newDocument.id = '';
+
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+    // Ensure URL is absolute (add http:// if missing)
     if (newDocument.url && !/^https?:\/\//i.test(newDocument.url)) {
       newDocument.url = 'http://' + newDocument.url;
     }
-    this.documents.push(newDocument);
-    this.storeDocuments();
+
+    // add to database
+    this.http.post<{ message: string, document: Document }>(this.nodeServerUrl,
+      newDocument,
+      { headers: headers })
+      .subscribe(
+        (responseData) => {
+          // add new document to documents
+          this.documents.push(responseData.document);
+          this.sortAndSend();
+        }
+      );
   }
 
   // Update an existing document: locate original and replace with newDocument
   updateDocument(originalDocument: Document, newDocument: Document) {
-    if (!originalDocument || !newDocument) return;
+    if (!originalDocument || !newDocument) {
+      return;
+    }
 
-    const pos = this.documents.indexOf(originalDocument);
-    if (pos < 0) return;
+    const pos = this.documents.findIndex(d => d.id === originalDocument.id);
 
+    if (pos < 0) {
+      return;
+    }
+
+    // set the id of the new Document to the id of the old Document
     newDocument.id = originalDocument.id;
+
+    // Ensure URL is absolute (add http:// if missing)
     if (newDocument.url && !/^https?:\/\//i.test(newDocument.url)) {
       newDocument.url = 'http://' + newDocument.url;
     }
-    this.documents[pos] = newDocument;
-    this.storeDocuments();
+
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+    // update database
+    this.http.put(this.nodeServerUrl + '/' + originalDocument.id,
+      newDocument, { headers: headers })
+      .subscribe(
+        (response: any) => {
+          this.documents[pos] = newDocument;
+          this.sortAndSend();
+        }
+      );
   }
 
   // Delete a document (accepts a Document object)
   deleteDocument(document: Document) {
-    if (!document) return;
 
-    const pos = this.documents.indexOf(document);
-    if (pos < 0) return;
+    if (!document) {
+      return;
+    }
 
-    this.documents.splice(pos, 1);
-    this.storeDocuments();
+    const pos = this.documents.findIndex(d => d.id === document.id);
+
+    if (pos < 0) {
+      return;
+    }
+
+    // delete from database
+    this.http.delete(this.nodeServerUrl + '/' + document.id)
+      .subscribe(
+        (response: any) => {
+          this.documents.splice(pos, 1);
+          this.sortAndSend();
+        }
+      );
   }
 
-  storeDocuments(): void {
-    const body = JSON.stringify(this.documents);
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    this.http.put(this.firebaseUrl, body, { headers })
-      .subscribe(() => {
-        this.documentListChangedEvent.next(this.documents.slice());
-      }, (error) => {
-        console.error('Error storing documents to server:', error);
-      });
+  private sortAndSend() {
+    this.documents.sort((a,b) => (a.name || '').localeCompare(b.name || ''));
+    this.documentListChangedEvent.next(this.documents.slice());
   }
 }

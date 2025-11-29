@@ -12,7 +12,7 @@ export class MessageService {
 
 	private messages: Message[] = [];
 	maxMessageId: number = 0;
-	private firebaseUrl = 'https://w09database-default-rtdb.firebaseio.com/messages.json';
+	private nodeServerUrl = 'http://localhost:3000/messages';
 
 	constructor(private http: HttpClient) {
 		this.messages = [];
@@ -22,11 +22,10 @@ export class MessageService {
 
 	// Get all messages
 	getMessages(): Message[] {
-		this.http.get<Message[]>(this.firebaseUrl)
+		this.http.get<{ message: string, messages: Message[] }>(this.nodeServerUrl)
 			.subscribe(
-				(messages: Message[]) => {
-					this.messages = messages || [];
-					this.maxMessageId = this.getMaxId();
+				(response) => {
+					this.messages = response.messages || [];
 					this.messageChangedEvent.emit(this.messages.slice());
 				},
 				(error: any) => {
@@ -36,38 +35,39 @@ export class MessageService {
 		return this.messages.slice();
 	}
 
+	// Add a new message
+	addMessage(message: Message): void {
+		if (!message) {
+			return;
+		}
+
+		message.id = '';
+
+		const headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+		this.http.post<{ message: string, newMessage: Message }>(this.nodeServerUrl,
+			message,
+			{ headers: headers })
+			.subscribe(
+				(responseData) => {
+					this.messages.push(responseData.newMessage);
+					this.messageChangedEvent.emit(this.messages.slice());
+				}
+			);
+	}
+
 	// Get a single message by id
 	getMessage(id: string): Message | undefined {
 		return this.messages.find(m => m.id === id);
 	}
 
-	// Add a new message
-	addMessage(message: Message): void {
-		if (!message) return;
-		this.maxMessageId++;
-		message.id = this.maxMessageId.toString();
-		this.messages.push(message);
-		this.storeMessages();
-	}
-
-	getMaxId(): number {
+	private getMaxId(): number {
 		let maxId = 0;
 		for (const m of this.messages) {
 			const currentId = parseInt(m.id as any, 10);
 			if (!isNaN(currentId) && currentId > maxId) maxId = currentId;
 		}
 		return maxId;
-	}
-
-	storeMessages(): void {
-		const body = JSON.stringify(this.messages);
-		const headers = new HttpHeaders({'Content-Type': 'application/json'});
-		this.http.put(this.firebaseUrl, body, { headers })
-			.subscribe(() => {
-				this.messageChangedEvent.emit(this.messages.slice());
-			}, (error) => {
-				console.error('Error storing messages to server:', error);
-			});
 	}
 }
 
